@@ -1,0 +1,116 @@
+.modal-drink-ingredients {
+     position: absolute;
+  font-family: 'Poppins';
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  padding: 40px 20px;
+  color: $black-color;
+  background-color: $white-color;
+  transform: translate(-50%, -50%);
+  @media screen and (min-width: 768px) {
+    width: 715px;
+    padding: 40px 28px 28px 28px;
+  }
+}
+.modal-drink-container {
+
+}
+.button-modal-close {
+    position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &__icon {
+    position: absolute;
+  }
+}
+.drink-name {
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 900;
+font-size: 32px;
+line-height: 38px;
+color: $black-color;
+
+margin-bottom: 20px;
+
+}
+.drink-category {
+
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+text-transform: uppercase;
+
+
+
+/* Black */
+
+color: $black-color;
+
+margin-bottom: 20px;
+
+}
+
+.drink-description {
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 1.75;
+
+/* Gray */
+
+color: $gray-color;
+
+margin-bottom: 28px;
+
+&--marked-word {
+    color: $black-color;
+}
+
+}
+.drink-classification-list {
+    margin-bottom: 32px;
+}
+.drink-classification-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    color: $gray-color;
+}
+.classification-type {
+}
+.classification-value {
+}
+.drink-controller-btn {
+  
+  background-color: $grapefruit-color;
+  border-color: transparent;
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin: 0 0 0 auto;
+  }
+}
+.drink-controller-btn--name {
+        font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: $white-color;
+}
