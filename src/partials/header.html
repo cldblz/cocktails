@@ -1,0 +1,88 @@
+<header class="header">
+  <div class="container">
+    <div class="navigation-wrapper">
+      <nav class="navigation">
+        <!-------------------------------------------------------------- LOGO ---------------------------->
+        <a class="header__logo-link" href="index.html">
+          <img src="./images/logo.svg" alt="logo" class="logo-img" />
+        </a>
+
+        <!---------------------------------------------------------- navigation -------------------------------->
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a class="navigation__link" href="index.html">Home</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="index.html">Favorite</a>
+          </li>
+        </ul>
+      </nav>
+      <!------------------------------------------------------------------header INPUT -------------------------------->
+      <div class="header-right-wrapper">
+        <form class="header-form">
+          <input type="search" placeholder="Search" class="header-input" />
+          <button type="button" class="search-button"></button>
+        </form>
+        <!---------------------------------------------------------------header  SWITCHER ------------------------------->
+        <ul class="header-switcher">
+          <li class="header-switcher-light">Light</li>
+          <li>
+            <svg class="header-switcher-border-icon" width="40" height="20">
+              <use href="./images/icons.svg#switcher-border-icon"></use>
+            </svg>
+          </li>
+          <li class="header-switcher-dark">Dark</li>
+        </ul>
+
+        <!------------------------------------------------------------------- BURGER MENU BUTTON ----------------------------->
+        <button type="button" class="burger-menu-btn" data-menu-open>
+          <svg
+            class="burger-menu-btn-icon"
+            width="32"
+            height="32"
+            aria-label="Burger menu toggle"
+          >
+            <!-------------------------------------------------------- https://www.youtube.com/watch?v=t5hlXeln3go&t=6710s -->
+            <use class="icon-menu" href="./images/icons.svg#icon-menu"></use>
+            <use class="icon-cross" href="./images/icons.svg#icon-cross"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" data-menu>
+      <!-----------------------------------------------------------------burger menu wrapper------------>
+      <div class="mobile-menu-wrapper">
+        <!---------------------------------------------------------------burger menu SWITCHER ------------------------------->
+        <ul>
+          <li class="burger-switcher-light">Light</li>
+          <li>
+            <svg
+              class="burger-menu-switcher-border-icon"
+              width="40"
+              height="16"
+            >
+              <use href="./images/icons.svg#switcher-border-icon"></use>
+            </svg>
+          </li>
+          <li class="burger-switcher-dark">Dark</li>
+        </ul>
+
+        <div>
+          <!------------------------------------------------------------------burger menu INPUT -------------------------------->
+          <input type="text" class="burger-input" />
+
+          <!----------------------------------------------------------------- MOBILE NAV MENU ----------------------------->
+          <ul class="mobile-menu-navigation__list">
+            <li class="mobile-menu-navigation__item">
+              <a class="mobile-navigation__link" href="index.html">Home </a>
+            </li>
+            <li class="mobile-menu-navigation__item">
+              <a class="mobile-navigation__link" href="index.html">Favorite</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

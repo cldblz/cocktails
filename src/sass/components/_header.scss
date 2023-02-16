@@ -1,0 +1,163 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  //   height: 40px;
+}
+
+.navigation-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo-link {
+  //   display: block;
+  margin-right: 50px;
+}
+
+.logo-img {
+  //   display: block;
+  width: 125px;
+}
+
+.navigation__list {
+  display: none;
+  @include desktop {
+    display: flex;
+    gap: 100px;
+  }
+}
+
+.navigation__item {
+  font-family: 'Poppins';
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+}
+
+.navigation__link {
+}
+
+.header-right-wrapper {
+  display: flex;
+  align-items: center;
+  //   justify-content: space-between;
+}
+
+.header-form {
+  position: relative;
+}
+
+.search-button {
+  display: none;
+
+  @include tablet {
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-right: 1px solid $grapefruit-color;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    cursor: pointer;
+  }
+}
+
+.header-input {
+  display: none;
+
+  @include tablet {
+    width: 280px;
+    height: 40px;
+    display: block;
+    outline: none;
+    border: 1px solid $grapefruit-color;
+    border-radius: 4px;
+    font-family: 'Poppins';
+    line-height: 1.71;
+    letter-spacing: 0.02em;
+    padding: 5px 5px 5px 48px;
+  }
+  @include desktop {
+    width: 290px;
+  }
+}
+
+.header-switcher {
+  display: none;
+  @include desktop {
+    display: flex;
+    margin-left: 150px;
+  }
+}
+
+.header-switcher-light {
+  color: $grapefruit-color;
+  font-family: 'Poppins';
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header-switcher-border-icon {
+}
+
+.header-switcher-dark {
+  font-family: 'Poppins';
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.burger-menu-btn {
+  background-color: transparent;
+  border: none;
+  height: 25px;
+
+  @include tablet {
+    margin-left: 40px;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.burger-menu-btn-icon {
+  width: 30px;
+  height: 16px;
+}
+
+.icon-cross {
+  //   display: none;
+}
+
+.icon-menu {
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu-wrapper {
+}
+
+.burger-input {
+}
+
+.mobile-menu-navigation__list {
+}
+
+.mobile-menu-navigation__item {
+}
+
+.mobile-navigation__link {
+}
