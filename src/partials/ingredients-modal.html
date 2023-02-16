@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>modal-ingredients</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
+  <body>
+    <div class="backdrop" >
+      <div class="modal-drink-ingredients">
+        <div class="modal-container">
+          <button type="button" class="button-modal-close">
+            Х
+            <!-- <svg class="icon-close-black" width="18" height="18">
+          <use href="./image/icons.svg#icon-close-black"></use>
+        </svg> -->
+          </button>
+
+          <h1 class="drink-name">Campari</h1>
+
+          <h2 class="drink-category">Liqueur</h2>
+
+          <p class="drink-description">
+            Campari is an Italian alcoholic liqueur, considered an apéritif
+            (20.5%, 21%, 24%, 25%, or 28.5% ABV, depending on the country in
+            which it is sold), obtained from the infusion of herbs and fruit
+            (including chinotto and cascarilla) in alcohol and water. It is a
+            bitters, characterised by its dark red colour.
+          </p>
+
+          <ul class="drink-classification-list">
+            <li class="drink-classification-item">
+              <p class="classification-type">✶ Type:</p>
+              <span class="classification-value">Bitters</span>
+            </li>
+            <li class="drink-classification-item">
+              <p class="classification-type">✶ Country of origin:</p>
+              <span class="classification-value">Italy</span>
+            </li>
+            <li class="drink-classification-item">
+              <p class="classification-type">✶ Alcohol by volume:</p>
+              <span class="classification-value">20.5–28.5%</span>
+            </li>
+            <li class="drink-classification-item">
+              <p class="classification-type">✶ Flavour:</p>
+              <span class="classification-value">Bitter, spicy and sweet</span>
+            </li>
+          </ul>
+          <button
+            type="button"
+            data-favorite-controller
+            class="drink-controller-btn"
+          >
+            <!-- <span class="drink-controller-name">Add to favorite</span> -->
+            <span class="drink-controller-btn-name">Remove from favorite</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
