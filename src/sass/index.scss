@@ -1,2 +1,14 @@
 @import './common';
-@import './example';
+@import './utils/vars';
+@import './utils/container';
+@import './utils/backdrop';
+@import './utils/visually-hidden';
+@import './utils/fonts';
+
+@import './components/header';
+@import './components/hero';
+@import './components/cocktails';
+@import './components/footer';
+@import './components/favorite';
+@import './components/cocktails-modal';
+@import './components/ingredients-modal';
