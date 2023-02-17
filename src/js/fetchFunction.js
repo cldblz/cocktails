@@ -10,7 +10,7 @@ export async function fetchDrinksByName(drinkName) {
   }
 }
 
-export async function findDrinkById(drinkId) {
+export async function fetchDrinkById(drinkId) {
   try {
     const response = await fetch(`${BASE_URL}lookup.php?i=${drinkId}`);
     const drink = await response.json();
@@ -30,7 +30,7 @@ export async function fetchRandomCocktail() {
     }
   }
 
-  export async function findDrinkByLetter(letter) {
+  export async function fetchDrinkByLetter(letter) {
     try {
       const response = await fetch(`${BASE_URL}search.php?f=${letter}`);
       const drink = await response.json();
@@ -40,7 +40,7 @@ export async function fetchRandomCocktail() {
     }
   }
 
-  export async function findIngredientById(ingredientId) {
+  export async function fetchIngredientById(ingredientId) {
     try {
       const response = await fetch(`${BASE_URL}lookup.php?iid=${ingredientId}`);
       const drink = await response.json();
@@ -51,7 +51,7 @@ export async function fetchRandomCocktail() {
   }
 
 
-  export async function findIngredientByName(ingredientName) {
+  export async function fetchIngredientByName(ingredientName) {
     try {
       const response = await fetch(`${BASE_URL}search.php?i=${ingredientName}`);
       const drink = await response.json();
