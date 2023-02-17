@@ -1,0 +1,141 @@
+<header class="header">
+  <div class="container">
+    <div class="navigation-wrapper">
+      <nav class="navigation">
+        <!-------------------------------------------------------------- LOGO ---------------------------->
+        <a class="header__logo-link" href="index.html">
+          <img src="./images/logo.svg" alt="logo" class="logo-img" />
+        </a>
+
+        <!---------------------------------------------------------- navigation -------------------------------->
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a class="navigation__link" href="index.html">Home</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="index.html">Favorite</a>
+          </li>
+        </ul>
+      </nav>
+      <!------------------------------------------------------------------header INPUT -------------------------------->
+      <div class="header-right-wrapper">
+        <form class="header-form">
+          <input type="search" placeholder="Search" class="header-input" />
+          <button type="button" class="search-button">
+            <svg
+              class="input-search-icon"
+              width="32"
+              height="32"
+              aria-label="Burger menu toggle"
+            >
+              <use href="./images/icons.svg#icon-search"></use>
+            </svg>
+          </button>
+        </form>
+        <!---------------------------------------------------------------header  SWITCHER ------------------------------->
+        <ul class="header-switcher">
+          <li class="header-switcher-light">Light</li>
+          <li>
+            <button
+              type="button"
+              class="switcher-button"
+              data-header-theme-switcher
+            >
+              <div class="switcher-dot"></div>
+            </button>
+          </li>
+          <li class="header-switcher-dark">Dark</li>
+        </ul>
+
+        <!------------------------------------------------------------------- BURGER MENU BUTTON ----------------------------->
+        <button
+          type="button"
+          class="burger-menu-btn"
+          aria-expanded="false"
+          data-burger-menu-toggle
+        >
+          <svg
+            class="burger-menu-btn-icon"
+            width="32"
+            height="32"
+            aria-label="Burger menu toggle"
+          >
+            <!-----------46:00--start build modal------ https://youtu.be/Z5lYspOgtrY?t=2885 -->
+            <!-------------------------------------------------------- https://www.youtube.com/watch?v=t5hlXeln3go&t=6710s -->
+            <use
+              class="burger-icon-menu"
+              href="./images/icons.svg#icon-menu"
+            ></use>
+            <use
+              class="burger-icon-cross"
+              href="./images/icons.svg#icon-cross"
+            ></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu container" data-burger-menu>
+      <!-----------------------------------------------------------------burger menu wrapper------------>
+      <div class="mobile-menu-wrapper">
+        <a class="burger__logo-link" href="index.html">
+          <img src="./images/logo.svg" alt="logo" class="logo-img" />
+        </a>
+        <!---------------------------------------------------------------burger menu SWITCHER ------------------------------->
+        <div>
+          <ul class="burger-switcher">
+            <li class="burger-switcher-light">Light</li>
+            <li>
+              <button
+                type="button"
+                class="switcher-button"
+                data-burger-theme-switcher
+              >
+                <div class="switcher-burger-dot"></div>
+              </button>
+            </li>
+            <li class="burger-switcher-dark">Dark</li>
+          </ul>
+
+          <div>
+            <!------------------------------------------------------------------burger menu INPUT -------------------------------->
+            <div class="burger-input-wrapper">
+              <input type="text" class="burger-input" placeholder="Search" />
+              <button type="button" class="burger-search-button">
+                <svg
+                  class="input-search-icon"
+                  width="24"
+                  height="24"
+                  aria-label="Burger menu search"
+                >
+                  <use href="./images/icons.svg#icon-search"></use>
+                </svg>
+              </button>
+            </div>
+            <!----------------------------------------------------------------- MOBILE NAV MENU ----------------------------->
+            <ul class="mobile-menu-navigation__list">
+              <li class="mobile-menu-navigation__item">
+                <a class="mobile-navigation__link" href="index.html">Home </a>
+              </li>
+              <li class="mobile-menu-navigation__item">
+                <a class="mobile-navigation__link" href="index.html"
+                  >Favorite</a
+                >
+                <button type="button" class="burger-menu-arrow">
+                  <svg
+                    class="burger-menu-arrow-icon"
+                    width="24"
+                    height="24"
+                    aria-label="Burger menu arrow"
+                  >
+                    <use href="./images/icons.svg#icon-arrow"></use>
+                  </svg>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
