@@ -1,0 +1,14 @@
+.footer {
+    @include mobile {
+      width: 100vw;
+    }
+    @include tablet {
+      width: 100vw;
+    }
+    @include desktop {
+      width: 100vw;
+    }
+    height: 110px;
+    background-color: $grapefruit-color;
+    margin-top: 60px;
+  }
