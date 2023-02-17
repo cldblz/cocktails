@@ -21,7 +21,16 @@
       <div class="header-right-wrapper">
         <form class="header-form">
           <input type="search" placeholder="Search" class="header-input" />
-          <button type="button" class="search-button"></button>
+          <button type="button" class="search-button">
+            <svg
+              class="input-search-icon"
+              width="32"
+              height="32"
+              aria-label="Burger menu toggle"
+            >
+              <use href="./images/icons.svg#search"></use>
+            </svg>
+          </button>
         </form>
         <!---------------------------------------------------------------header  SWITCHER ------------------------------->
         <ul class="header-switcher">
@@ -35,7 +44,7 @@
         </ul>
 
         <!------------------------------------------------------------------- BURGER MENU BUTTON ----------------------------->
-        <button type="button" class="burger-menu-btn" data-menu-open>
+        <button type="button" class="burger-menu-btn" data-burger-menu-open>
           <svg
             class="burger-menu-btn-icon"
             width="32"
@@ -43,8 +52,14 @@
             aria-label="Burger menu toggle"
           >
             <!-------------------------------------------------------- https://www.youtube.com/watch?v=t5hlXeln3go&t=6710s -->
-            <use class="icon-menu" href="./images/icons.svg#icon-menu"></use>
-            <use class="icon-cross" href="./images/icons.svg#icon-cross"></use>
+            <use
+              class="burger-icon-menu"
+              href="./images/icons.svg#icon-menu"
+            ></use>
+            <use
+              class="burger-icon-cross"
+              href="./images/icons.svg#icon-cross"
+            ></use>
           </svg>
         </button>
       </div>
@@ -71,6 +86,16 @@
         <div>
           <!------------------------------------------------------------------burger menu INPUT -------------------------------->
           <input type="text" class="burger-input" />
+          <button type="button" class="search-button">
+            <svg
+              class="burger-input-search-icon"
+              width="32"
+              height="32"
+              aria-label="Burger menu toggle"
+            >
+              <use href="./images/icons.svg#search"></use>
+            </svg>
+          </button>
 
           <!----------------------------------------------------------------- MOBILE NAV MENU ----------------------------->
           <ul class="mobile-menu-navigation__list">

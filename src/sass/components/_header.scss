@@ -72,6 +72,12 @@
     cursor: pointer;
   }
 }
+.input-search-icon {
+  position: absolute;
+  display: block;
+
+  fill: black;
+}
 
 .header-input {
   display: none;
@@ -118,9 +124,12 @@
 }
 
 .burger-menu-btn {
+  display: block;
   background-color: transparent;
   border: none;
-  height: 25px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
 
   @include tablet {
     margin-left: 40px;
@@ -132,15 +141,14 @@
 }
 
 .burger-menu-btn-icon {
-  width: 30px;
-  height: 16px;
 }
 
-.icon-cross {
-  //   display: none;
+.burger-icon-menu {
+  // display: none;
 }
 
-.icon-menu {
+.burger-icon-cross {
+  // display: none;
 }
 
 .mobile-menu {
