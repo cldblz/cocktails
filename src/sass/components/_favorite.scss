@@ -1,0 +1,160 @@
+.favorite__container {
+  // background-color: #c27c7c;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.cocktails-content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 250px;
+   
+  }
+
+  @include desktop {
+    padding-top: 70px;
+   
+  }
+}
+
+.favorite__title {
+  margin-bottom: 60px;
+  text-align: center;
+  color: $black-color;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+
+  @include tablet {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.18;
+    text-align: center;
+    margin-bottom: 78px;
+  }
+
+  @include desktop {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+}
+
+.favorite__list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $grapefruit-color;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 20px;
+
+  // @include tablet {
+  //   width: 336px;
+  // }
+
+  // @include desktop {
+  //   width: 395px;
+  // }
+}
+
+.favorite__list-card {
+  // background-color: #5ca82f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 20px;
+  list-style: none;
+  padding-left: 0;
+  @include tablet {
+    gap: 31px;
+    padding-left: 0;
+  }
+  @include desktop {
+    gap: 30px;
+  }
+}
+
+.favorite__list-name {
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.6;
+  margin-bottom: 20px;
+
+  text-align: inherit;
+  color: $black-color;
+
+  @include tablet {
+    margin-bottom: 28px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  @include desktop {
+    margin-bottom: 28px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+}
+
+.favorite__list-type {
+  margin-bottom: 20px;
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  text-transform: uppercase;
+  color: $gray-color;
+
+  @include tablet {
+    padding-bottom: 28px;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  @include desktop {
+    padding-bottom: 28px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.favorite__btn-wrap {
+  gap: 10px;
+
+  @include mobile {
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+  }
+
+  @include tablet {
+    flex-direction: row;
+  }
+}
+
+.cocktails__btn {
+  background: #fe7031;
+  border-radius: 4px;
+}
+
+.cocktails__button-text {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid #fd5103;
+}

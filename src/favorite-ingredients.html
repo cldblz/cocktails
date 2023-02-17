@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite ingrigients</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
+  <body>
+    <!-- <include src="./partials/header.html"></include> -->
+    <section class="favorite__container container">
+      <h2 class="favorite__title dark--title">Favorite ingredients</h2>
+      <div class="favorite__list-card">
+        <!-- приклад -->
+        <div class="favorite__list-item">
+          <p class="favorite__list-name">Campari</p>
+          <p class="favorite__list-type">Liqueur</p>
+          <div class="favorite__btn-wrap">
+            <button
+              type="button"
+              class="cocktails__btn"
+              data-modal-cocktail-open
+            >
+              <span class="cocktails__button-text">Learn more</span>
+            </button>
+            <button
+              type="button"
+              class="cocktails__btn transparent js-remove-btn"
+            >
+              Remove
+              <svg class="cocktails__btn-icon" width="21" height="19">
+                <use href="./images/icons.svg#icon-heart-empty"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="favorite__list-item">
+          <p class="favorite__list-name">Blanco tequila</p>
+          <p class="favorite__list-type">Distilled beverage</p>
+          <div class="favorite__btn-wrap">
+            <button
+              type="button"
+              class="cocktails__btn"
+              data-modal-cocktail-open
+            >
+              <span class="cocktails__button-text">Learn more</span>
+            </button>
+            <button
+              type="button"
+              class="cocktails__btn transparent js-remove-btn"
+            >
+              Remove
+              <svg class="cocktails__btn-icon" width="21" height="19">
+                <use href="./images/icons.svg#icon-heart-empty"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="favorite__list-item card-set-item">
+          <p class="favorite__list-name">Vermouth</p>
+          <p class="favorite__list-type">fortified wine</p>
+          <div class="favorite__btn-wrap">
+            <button
+              type="button"
+              class="cocktails__btn"
+              data-modal-cocktail-open
+            >
+              <span class="cocktails__button-text">Learn more</span>
+            </button>
+            <button
+              type="button"
+              class="cocktails__btn transparent js-remove-btn"
+            >
+              Remove
+              <svg class="cocktails__btn-icon" width="21" height="19">
+                <use href="./images/icons.svg#icon-heart-empty"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- приклад -->
+      </div>
+    </section>
+    <!-- <include src="./partials/footer.html"></include>
+    <include src="./partials/ingredients-modal.html"></include>
+    <script type="module" src="../js/favorite-ingridients.js"></script> -->
+  </body>
+</html>
