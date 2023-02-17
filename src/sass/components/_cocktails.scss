@@ -53,7 +53,7 @@ button{
   }
   position: relative;
   background-color: transparent;
-  border-color: $auxiliary-orange-color;
+ 
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -76,6 +76,8 @@ button{
   &:active .svg{
     fill: transparent;
   }
+  border-style: none;
+  border: 2px solid $auxiliary-orange-color;
 }
 
 .cocktail-item__remove {
@@ -94,7 +96,6 @@ button{
   }
   position: relative;
   background-color: white;
-  border-color: $auxiliary-orange-color;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -112,6 +113,8 @@ button{
   &:active{
     background-color: transparent;
   }
+  border-style: none;
+  border: 2px solid $auxiliary-orange-color;
 }
 
 .cocktail-item__learn-more {
@@ -130,7 +133,6 @@ button{
   }
   position: relative;
   background-color: $auxiliary-orange-color;
-  border-color: $auxiliary-orange-color;
   border-radius: 4px;
   color: $white-color;
   font-family: 'Roboto', sans-serif;
@@ -145,6 +147,8 @@ button{
     background-color: $auxiliary-orange-color;
     color: $white-color;
   }
+  border-style: none;
+  border: 2px solid $auxiliary-orange-color;
 }
 
 .button-wrap {
@@ -176,10 +180,26 @@ button{
   }
   @include desktop {
     font-size: 32px;
+    margin: 15px auto 23px;
+    height: 70px;
   }
+  display: flex;
   width: fit-content;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   line-height: 1.2;
+  text-align: center;
+  align-items: center;
+}
+
+.cocktail-title{
+  margin: 0 auto 60px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  /* identical to box height, or 150% */
+
   text-align: center;
 }
