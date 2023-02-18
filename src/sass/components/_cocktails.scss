@@ -5,12 +5,15 @@ button{
 .cocktail-list {
     @include mobile{
         gap: 20px;
+        padding-bottom: 24px;
     }
     @include tablet{
         gap: 32px;
+        padding-bottom: 22px;
     }
     @include desktop{
         gap: 31px;
+        padding-bottom: 28px;
     }
   display: flex;
   flex-wrap: wrap;
@@ -64,6 +67,7 @@ button{
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
+  transition: all 250ms $timing-function;
   &:hover{
     background-color: $button-hover-color;
   }
@@ -107,6 +111,7 @@ button{
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
+  transition: all 250ms $timing-function;
   &:hover{
     background-color: $button-hover-color;
   }
@@ -139,6 +144,7 @@ button{
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
+  transition: all 250ms $timing-function;
   &:hover{
     background-color: $button-hover-color;
     color: $auxiliary-orange-color;
@@ -177,6 +183,7 @@ button{
   @include tablet {
     margin: 20px auto 27px;
     font-size: 28px;
+    height: 70px;
   }
   @include desktop {
     font-size: 32px;
@@ -193,7 +200,7 @@ button{
 }
 
 .cocktail-title-main{
-  // margin: 0 auto 60px;
+  margin: 0 auto 60px;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -201,4 +208,8 @@ button{
   font-size: 48px;
   line-height: 1.5;
   text-align: center;
+}
+
+.cocktail-item_img{
+  border-radius: 4px;
 }
