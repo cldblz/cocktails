@@ -6,6 +6,9 @@ html {
 
 body {
     background-color: $white-color;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 *,
