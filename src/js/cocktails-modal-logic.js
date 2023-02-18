@@ -5,6 +5,7 @@ const closeCocktailsModalBtn = document.querySelector(
   '[data-cocktails-modal-close]'
 );
 const drinkInfo = document.querySelector('.cocktails-modal-content-wrap');
+const cocktailsList = document.querySelector('.cocktail-list');
 
 export function toggleModal() {
   cocktailsModal.classList.toggle('is-hidden');
@@ -23,6 +24,7 @@ export async function renderDrinkInfo(data) {
   const drink = data.drinks[0];
 
   const ingArr = [];
+  let liMarkup = [];
 
   for (let i = 1; i < 16; i++) {
     const ingredient = drink[`strIngredient${i}`];
@@ -31,19 +33,14 @@ export async function renderDrinkInfo(data) {
       if (!measure) {
         measure = '';
       }
-      ingArr.push(`${measure} ${ingredient}`);
+      ingArr.push(
+        `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
+          <p><span>&#10038;</span> ${measure} ${ingredient}</p>
+        </li>`
+      );
+      liMarkup = ingArr.join('');
     }
   }
-
-  let liMarkup = ingArr
-    .map(elem => {
-      if (elem !== null) {
-        return `<li class="cocktail-ingredients-list-item">
-            <p><span>&#10038;</span> ${elem}</p>
-          </li>`;
-      }
-    })
-    .join('');
 
   const markup = `<h2 class="cocktail-title">${drink.strDrink}</h2>
       <div class="cocktail-description">
@@ -65,8 +62,14 @@ export async function renderDrinkInfo(data) {
 }
 
 export async function openCocktailsModal(e) {
-  const elemId = e.target.parentNode.dataset.iddrink;
-  const foundedDrink = await fetchDrinkById(elemId);
-  renderDrinkInfo(foundedDrink);
-  toggleModal();
+  if (e.target.classList.contains('cocktail-item__learn-more')) {
+    const elemId = e.target.parentNode.dataset.iddrink;
+    const foundedDrink = await fetchDrinkById(elemId);
+    renderDrinkInfo(foundedDrink);
+    toggleModal();
+  } else if (e.target.classList.contains('cocktail-item__remove')) {
+  } else if (e.target.classList.contains('cocktail-item__add-to')) {
+  }
 }
+
+cocktailsList.addEventListener('click', openCocktailsModal);
