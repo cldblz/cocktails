@@ -10,7 +10,7 @@ const docBody = document.querySelector('body');
 
 export function toggleModal() {
   cocktailsModal.classList.toggle('is-hidden');
-  docBody.classList.toggle('modal-open');
+  docBody.classList.toggle('modal-cocktails-open');
 }
 
 closeCocktailsModalBtn.addEventListener('click', toggleModal);
