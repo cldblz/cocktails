@@ -1,6 +1,5 @@
 import { fetchRandomCocktail } from "./fetchFunction";
 import { renderCocktail } from "./render_function_for_cocktail";
-import { openCocktailsModal } from "./cocktails-modal-logic";
 
 document.addEventListener('DOMContentLoaded', generateCocktails)
 
@@ -20,9 +19,4 @@ async function generateCocktails(){
     }
     document.querySelector('.cocktail-title-main').innerText = 'Cocktails'
     document.querySelector('.cocktail-list').innerHTML = listOfCocktails
-
-    const drinkItems = document.querySelectorAll('.cocktail-item__learn-more');
-    drinkItems.forEach(elem => {
-        elem.addEventListener('click', openCocktailsModal);
-    });
 }
