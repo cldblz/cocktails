@@ -1,16 +1,21 @@
 import IconHeart from '../images/icons.svg';
+import { openIngredientsModal } from './modal-ingredients';
+
+const modalIngredientsListM = document.querySelector('.card-list');
+modalIngredientsListM.addEventListener('click', openIngredientsModal);
+
 
 const renderIngredients = () => {
-  const name = 'Campari';
-  const details = 'Campari';
+  const name = 'Vodka';
+  const details = 'Vodka';
 
   return `
     <div class="cocktail-list__cocktail-item">
       <div class='card-item__info'>
         <p class="card-item__name">${name}</p>
         <p class="card-item__details">${details}</p>
-        <div class="button-wrap">
-          <button type="button" class="cocktail-item__learn-more">Learn more</button>
+        <div data-ingredient-name="${name}" class="button-wrap">
+          <button type="button" class="cocktail-item__learn-more js-ingredients-modal">Learn more</button>
           <button type="button" class="cocktail-item__remove">Remove
             <svg class="svg" width="21" height="19">
               <use href="${IconHeart}#icon-heart-filled"></use>
@@ -30,6 +35,7 @@ const getRandomIngredients = (htmlEl) => {
   }
 
   htmlEl.innerHTML = content;
+  
 }
 
 const init = () => {
