@@ -1,6 +1,6 @@
 import { addCocktailToLocalStorage, removeCocktailFromLocalStorage } from './add-to-remove-localstorage';
 import { fetchDrinkById } from './fetchFunction';
-
+import { openIngredientsModal } from './modal-ingredients';  
 
 
 const cocktailsModal = document.querySelector('[data-cocktails-modal]');
@@ -47,7 +47,7 @@ export async function renderDrinkInfo(data) {
       }
       ingArr.push(
         `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
-          <p><span>&#10038;</span> ${measure} ${ingredient}</p>
+          <p class="js-ingredients-modal"><span>&#10038;</span> ${measure} ${ingredient}</p>
         </li>`
       );
       liMarkup = ingArr.join('');
@@ -85,6 +85,10 @@ export async function renderDrinkInfo(data) {
   }
 
   drinkInfo.innerHTML = markup;
+  
+  const modalIngredientsList = document.querySelector('.cocktail-ingredients-list')
+
+  modalIngredientsList.addEventListener('click', openIngredientsModal)
 
 }
 
