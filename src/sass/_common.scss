@@ -11,6 +11,14 @@ body {
     flex-direction: column;
 }
 
+body.modal-ingredients-open {
+    overflow: hidden;
+}
+
+body.modal-cocktails-open {
+    overflow: hidden;
+}
+
 *,
 *::after,
 *::before {
