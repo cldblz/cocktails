@@ -1,3 +1,18 @@
+.hero {
+  @include mobile {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  @include tablet {
+    padding-top: 100px;
+    padding-bottom: 110px;
+  }
+  @include desktop {
+    padding-top: 90px;
+    padding-bottom: 105px;
+  }
+}
+
 .hero__title {
   width: 300px;
   height: 76px;
@@ -7,11 +22,11 @@
   color: $grapefruit-color;
   margin-bottom: 30px;
   @include tablet {
-    margin-top: 140px;
     width: 336px;
     height: 84px;
     font-size: 26px;
     line-height: calc(42 / 26);
+    margin-bottom: 40px;
   }
   @include desktop {
     width: 688px;
@@ -19,6 +34,9 @@
     font-size: 52px;
     line-height: calc(80 / 52);
   }
+}
+.container {
+  position: relative;
 }
 
 .hero__picture {
@@ -34,10 +52,11 @@
 
   @include tablet {
     position: absolute;
-    right: 0;
-    top: 90px;
+    right: 20px;
+    top: -12px;
     width: 336px;
     height: 294px;
+    margin-bottom: 0;
     background-image: url(../images/tablet-coctails@1x-min.png);
     @include retina {
       background-image: url(../images/tablet-coctails@2x-min.png);
@@ -55,20 +74,25 @@
 }
 
 .hero__text {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: calc(28 / 14);
-  letter-spacing: 0.02em;
-  color: #000000;
-  opacity: 0.8;
   @include mobile {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: calc(28 / 14);
+    letter-spacing: 0.02em;
+    color: #000000;
     margin-bottom: 20px;
     width: 324px;
+  }
+  @include tablet {
+    color: #202025;
+    height: 28px;
+    margin-bottom: 40px;
   }
   @include desktop {
     font-size: 18px;
     width: 600px;
+    font-size: 18px;
   }
 }
 
@@ -107,9 +131,10 @@
   fill: $white-color;
 }
 
-.list-mobile-filter{
-    display: none;
-}
+// .list-mobile-filter {
+//   transition-property: opacity;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+// }
 
 .hero__select-text {
   font-family: 'Poppins', sans-serif;
@@ -148,6 +173,9 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+  &:hover {
+    color: $grapefruit-color;
+  }
 }
 
 .wrapper-tablet-desktop-filter {
@@ -196,10 +224,10 @@
     height: 40px;
     font-size: 24px;
     line-height: calc(36 / 24);
+    
   }
 }
 
-.word:active {
+.word.active {
   color: $grapefruit-color;
-  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }

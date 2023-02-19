@@ -12,16 +12,39 @@
           <li class="navigation__item">
             <a class="navigation__link" href="index.html">Home</a>
           </li>
-          <li class="navigation__item">
-            <a class="navigation__link" href="index.html">Favorite</a>
+          <li class="navigation__item drop__item">
+            <p class="favorite-text">Favorite</p>
+
+            <div class="favorite__items">
+              <div class="navigation-drop__item">
+                <a
+                  class="navigation-drop__link"
+                  href="./favorite-cocktails.html"
+                  >Favorite cocktails</a
+                >
+              </div>
+              <div class="navigation-drop__item">
+                <a
+                  class="navigation-drop__link"
+                  href="./favorite-ingredients.html"
+                  >Favorite ingredients</a
+                >
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
       <!------------------------------------------------------------------header INPUT -------------------------------->
       <div class="header-right-wrapper">
-        <form class="header-form">
-          <input type="search" placeholder="Search" class="header-input" />
-          <button type="button" class="search-button">
+        <form class="header-form" data-header-submit>
+          <input
+            type="search"
+            placeholder="Search"
+            name="headerinput"
+            class="header-input"
+            data-header-input
+          />
+          <button type="submit" class="search-button">
             <svg
               class="input-search-icon"
               width="32"
@@ -34,7 +57,12 @@
         </form>
         <!---------------------------------------------------------------header  SWITCHER ------------------------------->
         <ul class="header-switcher">
-          <li class="header-switcher-light">Light</li>
+          <li
+            class="header-switcher-light"
+            data-header-text-color-switcher-light
+          >
+            Light
+          </li>
           <li>
             <button
               type="button"
@@ -44,7 +72,9 @@
               <div class="switcher-dot"></div>
             </button>
           </li>
-          <li class="header-switcher-dark">Dark</li>
+          <li class="header-switcher-dark" data-header-text-color-switcher-dark>
+            Dark
+          </li>
         </ul>
 
         <!------------------------------------------------------------------- BURGER MENU BUTTON ----------------------------->
@@ -75,16 +105,21 @@
       </div>
     </div>
 
-    <div class="mobile-menu container" data-burger-menu>
+    <div class="mobile-menu" data-burger-menu>
       <!-----------------------------------------------------------------burger menu wrapper------------>
-      <div class="mobile-menu-wrapper">
+      <div class="mobile-menu-wrapper container">
         <a class="burger__logo-link" href="index.html">
           <img src="./images/logo.svg" alt="logo" class="logo-img" />
         </a>
         <!---------------------------------------------------------------burger menu SWITCHER ------------------------------->
-        <div>
+        <div class="burger-wrapper">
           <ul class="burger-switcher">
-            <li class="burger-switcher-light">Light</li>
+            <li
+              class="burger-switcher-light"
+              data-burger-text-color-switcher-light
+            >
+              Light
+            </li>
             <li>
               <button
                 type="button"
@@ -94,14 +129,23 @@
                 <div class="switcher-burger-dot"></div>
               </button>
             </li>
-            <li class="burger-switcher-dark">Dark</li>
+            <li
+              class="burger-switcher-dark"
+              data-burger-text-color-switcher-dark
+            >
+              Dark
+            </li>
           </ul>
 
           <div>
             <!------------------------------------------------------------------burger menu INPUT -------------------------------->
             <div class="burger-input-wrapper">
               <input type="text" class="burger-input" placeholder="Search" />
-              <button type="button" class="burger-search-button">
+              <button
+                type="submit"
+                class="burger-search-button"
+                data-burger-submit
+              >
                 <svg
                   class="input-search-icon"
                   width="24"
@@ -118,10 +162,12 @@
                 <a class="mobile-navigation__link" href="index.html">Home </a>
               </li>
               <li class="mobile-menu-navigation__item">
-                <a class="mobile-navigation__link" href="index.html"
-                  >Favorite</a
+                <p class="burger-favorite-text">Favorite</p>
+                <button
+                  type="button"
+                  class="burger-menu-arrow"
+                  data-burger-menu-arrow
                 >
-                <button type="button" class="burger-menu-arrow">
                   <svg
                     class="burger-menu-arrow-icon"
                     width="24"
@@ -132,6 +178,20 @@
                   </svg>
                 </button>
               </li>
+              <div class="burger-favorite__items" data-burger-menu-favorite>
+                <div class="burger-drop__item">
+                  <a class="burger-drop__link" href="./favorite-cocktails.html"
+                    >Favorite cocktails</a
+                  >
+                </div>
+                <div class="burger-drop__item">
+                  <a
+                    class="burger-drop__link"
+                    href="./favorite-ingredients.html"
+                    >Favorite ingredients</a
+                  >
+                </div>
+              </div>
             </ul>
           </div>
         </div>
