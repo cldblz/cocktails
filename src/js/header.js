@@ -23,6 +23,8 @@ const burgerTextColorSwitcherDark = document.querySelector(
   '[data-burger-text-color-switcher-dark]'
 );
 
+
+
 const body = document.querySelector('body'); //--------------------------- перенести в скріпти для боді
 function bodyThemeReader() {
   const theme = localStorage.getItem("ui-theme")
@@ -101,3 +103,13 @@ function onBurgerSubmit(event) {
   const result = await fetchDrinksByName(drinkName);
   console.log('submit');
 }
+
+// -----------burger-menu-favorite---------------
+const dataBurgerMenuArrow = document.querySelector('[data-burger-menu-arrow')
+const dataBurgerMenuFavorite = document.querySelector('[data-burger-menu-favorite')
+dataBurgerMenuArrow.addEventListener('click', onClickBurgerMenuArrow);
+
+function onClickBurgerMenuArrow() {
+  dataBurgerMenuFavorite.classList.toggle('burger-favorite__items-display');
+
+ }
