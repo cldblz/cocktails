@@ -1,5 +1,5 @@
 .modal-drink-ingredients {
-  // overflow-y: scroll;
+  overflow-y: scroll;
   position: absolute;
   font-family: 'Poppins', 'sans-serif';
   top: 10%;
@@ -17,7 +17,7 @@
     width: 715px;
     padding: 40px 28px 28px 28px;
     
-    // overflow-y: visible;
+    overflow-y: visible;
   }
 
  
@@ -38,7 +38,7 @@
   cursor: pointer;
   &__icon {
     position: absolute;
-    transition: fill $timing-function;
+    transition: 250ms fill $timing-function;
   }
   &:hover,
   &:focus {
@@ -143,7 +143,7 @@
 }
 
 .classification {
-  transition: color $timing-function;
+  transition: 250ms color $timing-function;
   cursor: pointer;
   &:hover,
   &:focus {
@@ -160,7 +160,7 @@
   @media screen and (min-width: 768px) {
     display: block;
     margin: 0 0 0 auto;
-    transition: background-color $timing-function;
+    transition: 250ms background-color $timing-function;
     
   }
   &:hover,
@@ -179,5 +179,5 @@
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: $white-color;
-  transition: color $timing-function;
+  transition: 250ms color $timing-function;
 }
