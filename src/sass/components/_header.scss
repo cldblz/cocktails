@@ -33,7 +33,7 @@
   @include desktop {
     position: relative;
     display: flex;
-    gap: 100px;
+    gap: 60px;
     padding-top: 15px;
   }
 }
@@ -43,20 +43,22 @@
   font-size: 18px;
   line-height: 1.33;
   letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: color 250ms $timing-function;
+  cursor: default;
+  // transition: color 250ms $timing-function;
 
   :hover,
   :focus {
     color: $grapefruit-color;
+    transition: color 250ms $timing-function;
   }
 }
 
 .favorite__items {
   position: absolute;
+  background-color: $white-color;
   top: 40px;
-  left: 160px;
-  width: 100%;
+  left: 130px;
+  min-width: 250px;
   border: 1px solid $grapefruit-color;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -64,6 +66,8 @@
   :hover,
   :focus {
     display: block;
+    z-index: 8;
+    transition: display 1250ms $timing-function;
   }
 }
 
@@ -81,6 +85,7 @@
     background-color: $grapefruit-color;
     color: $white-color;
     transition: color 250ms $timing-function;
+    transition: background-color 300ms $timing-function;
   }
 }
 
@@ -98,6 +103,13 @@
 
 .header-form {
   position: relative;
+
+  @include tablet {
+    margin-right: 80px;
+  }
+  @include desktop {
+    margin-right: 10px;
+  }
 }
 
 .search-button {
@@ -347,12 +359,43 @@
 
 .mobile-menu-navigation__item {
   margin-top: 40px;
+  display: flex;
+}
+
+.burger-favorite-text {
+  // width: 100px;
 }
 
 .burger-menu-arrow {
   border: none;
   background-color: transparent;
   transform: rotate(90deg);
+}
+
+.burger-favorite__items {
+  width: 200px;
+  margin-top: 20px;
+  margin-left: 70px;
+  border: 1px solid $grapefruit-color;
+  border-radius: 5px;
+
+  flex-direction: column;
+  display: none;
+}
+.burger-favorite__items-display {
+  display: flex;
+  display: block;
+}
+
+.burger-drop__item {
+  border-radius: 5px;
+  background-color: $white-color;
+  padding: 10px;
+  :hover,
+  :focus {
+    background-color: $grapefruit-color;
+    color: $white-color;
+  }
 }
 
 .burger__logo-link {
