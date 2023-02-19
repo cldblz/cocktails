@@ -6,10 +6,11 @@ const closeCocktailsModalBtn = document.querySelector(
 );
 const drinkInfo = document.querySelector('.cocktails-modal-content-wrap');
 const cocktailsList = document.querySelector('.cocktail-list');
+const docBody = document.querySelector('body');
 
 export function toggleModal() {
   cocktailsModal.classList.toggle('is-hidden');
-  cocktailsModal.classList.toggle('modal-open');
+  docBody.classList.toggle('modal-cocktails-open');
 }
 
 closeCocktailsModalBtn.addEventListener('click', toggleModal);
@@ -24,7 +25,7 @@ export async function renderDrinkInfo(data) {
   const drink = data.drinks[0];
 
   const ingArr = [];
-  let liMarkup = [];
+  let liMarkup;
 
   for (let i = 1; i < 16; i++) {
     const ingredient = drink[`strIngredient${i}`];
