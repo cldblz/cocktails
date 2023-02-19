@@ -5,9 +5,9 @@ const modalIngredientsListM = document.querySelector('.card-list');
 modalIngredientsListM.addEventListener('click', openIngredientsModal);
 
 
-const renderIngredients = () => {
-  const name = 'Vodka';
-  const details = 'Vodka';
+const renderIngredients = (element) => {
+  const name = element.nameIngredient;
+  const details = element.typeIngredient;
 
   return `
     <div class="cocktail-list__cocktail-item">
@@ -29,13 +29,20 @@ const renderIngredients = () => {
 
 const getRandomIngredients = (htmlEl) => {
   // Todo: get data
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
+  console.log(localFavorite);
+  const favoriteIngredients = localFavorite.favoriteIngrediants;
   let content = '';
-  for (let i = 0; i < 3; i++) {
-    content += renderIngredients();
+  if (favoriteIngredients.length === 0) {
+    document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
+    return
   }
+  favoriteIngredients.forEach(element => {
+    content += renderIngredients(element);
+  });
 
   htmlEl.innerHTML = content;
-  
+
 }
 
 const init = () => {
