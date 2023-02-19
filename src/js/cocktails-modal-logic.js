@@ -37,7 +37,7 @@ export async function renderDrinkInfo(data) {
       }
       ingArr.push(
         `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
-          <p><span>&#10038;</span> ${measure} ${ingredient} </p>
+          <p><span>&#10038;</span> ${measure} ${ingredient}</p>
         </li>`
       );
       liMarkup = ingArr.join('');
