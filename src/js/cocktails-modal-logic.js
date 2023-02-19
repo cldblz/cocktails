@@ -1,5 +1,7 @@
 import { fetchDrinkById } from './fetchFunction';
 
+
+
 const cocktailsModal = document.querySelector('[data-cocktails-modal]');
 const closeCocktailsModalBtn = document.querySelector(
   '[data-cocktails-modal-close]'
@@ -35,7 +37,7 @@ export async function renderDrinkInfo(data) {
       }
       ingArr.push(
         `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
-          <p><span>&#10038;</span> ${measure} ${ingredient}</p>
+          <p><span>&#10038;</span> ${measure} ${ingredient} </p>
         </li>`
       );
       liMarkup = ingArr.join('');
@@ -59,11 +61,14 @@ export async function renderDrinkInfo(data) {
       </div>`;
 
   drinkInfo.innerHTML = markup;
+
 }
 
 export async function openCocktailsModal(e) {
   if (e.target.classList.contains('cocktail-item__learn-more')) {
+    
     const elemId = e.target.parentNode.dataset.iddrink;
+    
     const foundedDrink = await fetchDrinkById(elemId);
     renderDrinkInfo(foundedDrink);
     toggleModal();
