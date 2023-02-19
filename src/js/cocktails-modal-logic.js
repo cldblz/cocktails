@@ -1,6 +1,8 @@
 import { addCocktailToLocalStorage, removeCocktailFromLocalStorage } from './add-to-remove-localstorage';
 import { fetchDrinkById } from './fetchFunction';
 
+
+
 const cocktailsModal = document.querySelector('[data-cocktails-modal]');
 const closeCocktailsModalBtn = document.querySelector(
   '[data-cocktails-modal-close]'
@@ -83,10 +85,11 @@ export async function renderDrinkInfo(data) {
   }
 
   drinkInfo.innerHTML = markup;
+
 }
 
 export async function openCocktailsModal(e) {
-  if (e.target.classList.contains('cocktail-item__learn-more')) {
+  if (e.target.classList.contains('cocktail-item__learn-more')) {    
     const elemId = e.target.parentNode.dataset.idDrink;
     document.querySelector('.cocktails-modal').dataset.idDrink = elemId;
     const foundedDrink = await fetchDrinkById(elemId);

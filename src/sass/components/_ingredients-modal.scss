@@ -1,5 +1,5 @@
 .modal-drink-ingredients {
-  overflow-y: auto;
+  // overflow-y: scroll;
   position: absolute;
   font-family: 'Poppins', 'sans-serif';
   top: 10%;
@@ -17,7 +17,7 @@
     width: 715px;
     padding: 40px 28px 28px 28px;
     
-    overflow-y: visible;
+    // overflow-y: visible;
   }
 
  
