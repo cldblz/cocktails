@@ -211,7 +211,7 @@ display: none;
   align-items: center;
   justify-content: center;
   @include tablet {
-    transition: transform 400ms linear;
+    transition: transform 250ms linear;
     
     &:hover{
       transform: scale(1.7) rotate(1turn);
