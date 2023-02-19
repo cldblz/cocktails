@@ -6,6 +6,7 @@
 }
 
 .navigation-wrapper {
+  position: relative;
   display: flex;
   flex-direction: row;
   padding-top: 20px;
@@ -30,6 +31,7 @@
 .navigation__list {
   display: none;
   @include desktop {
+    position: relative;
     display: flex;
     gap: 100px;
     padding-top: 15px;
@@ -37,13 +39,55 @@
 }
 
 .navigation__item {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   line-height: 1.33;
   letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 250ms $timing-function;
+
+  :hover,
+  :focus {
+    color: $grapefruit-color;
+  }
 }
 
-.navigation__link {
+.favorite__items {
+  position: absolute;
+  top: 40px;
+  left: 160px;
+  width: 100%;
+  border: 1px solid $grapefruit-color;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: none;
+  :hover,
+  :focus {
+    display: block;
+  }
+}
+
+.drop__item:hover .favorite__items {
+  display: block;
+}
+
+.drop__item:focus .favorite__items {
+  display: block;
+}
+
+.navigation-drop__item {
+  :hover,
+  :focus {
+    background-color: $grapefruit-color;
+    color: $white-color;
+    transition: color 250ms $timing-function;
+  }
+}
+
+.navigation-drop__link {
+  color: $black-color;
+  padding: 12px;
+  display: block;
 }
 
 .header-right-wrapper {
@@ -87,11 +131,11 @@
     outline: none;
     border: 1px solid $grapefruit-color;
     border-radius: 4px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     line-height: 1.71;
     letter-spacing: 0.02em;
     padding: 5px 5px 5px 48px;
-    margin-right: 100px;
+    // margin-right: 100px;
   }
   @include desktop {
     width: 290px;
@@ -109,22 +153,20 @@
 
 .header-switcher-light {
   color: $grapefruit-color;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   line-height: 1.33;
   padding-top: 3px;
-}
-
-.header-switcher-border-icon {
 }
 
 .header-switcher-dark {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   line-height: 1.33;
   padding-top: 3px;
 }
 
+// ----------------------------------------------------------------burger-menu-btn
 .burger-menu-btn {
   position: absolute;
   z-index: 9;
@@ -145,7 +187,6 @@
     display: none;
   }
 }
-// ----------------------------------------------------------------burger-menu-btn
 .burger-menu-btn .burger-icon-cross {
   display: none;
 }
@@ -157,13 +198,9 @@
   display: none;
 }
 
-.burger-icon-cross {
-  //   position: absolute;
-  //   z-index: 9;
-}
-
 .mobile-menu {
   position: absolute;
+  z-index: 8;
   background-color: $white-color;
   width: 100%;
   height: 100vh;
@@ -171,10 +208,6 @@
   left: 0;
 
   display: none;
-
-  //   @include desktop {
-  //     display: none;
-  //   }
 }
 
 .mobile-menu.is-open {
@@ -188,8 +221,8 @@
   display: flex;
   justify-content: flex-start;
   gap: 60px;
-
-  height: 100vh;
+  // width: 100vh;
+  // height: 100vh;
 }
 
 .burger-switcher {
@@ -202,7 +235,7 @@
 
 .burger-switcher-light {
   color: $grapefruit-color;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.71;
   padding-top: 5px;
@@ -256,7 +289,7 @@
 }
 
 .burger-switcher-dark {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.71;
   padding-top: 5px;
@@ -274,7 +307,7 @@
   outline: none;
   border: 1px solid $grapefruit-color;
   border-radius: 4px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   line-height: 1.71;
   letter-spacing: 0.02em;
   padding: 5px 5px 5px 48px;
@@ -301,19 +334,19 @@
 }
 
 .mobile-menu-navigation__list {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   line-height: 1.12;
   letter-spacing: 0.02em;
   margin-bottom: 40px;
-  margin-left: 60px;
+
+  @include tablet {
+    margin-left: 60px;
+  }
 }
 
 .mobile-menu-navigation__item {
   margin-top: 40px;
-}
-
-.mobile-navigation__link {
 }
 
 .burger-menu-arrow {
@@ -325,6 +358,28 @@
 .burger__logo-link {
   display: none;
   @include tablet {
+    margin-top: 15px;
     display: block;
   }
+}
+
+.burger-wrapper {
+  @include tablet {
+    margin-left: 40px;
+  }
+}
+
+.header-switcher-light-revers {
+  color: $main-black-color;
+}
+.header-switcher-dark-revers {
+  color: $grapefruit-color;
+}
+
+.unscroll-body {
+  overflow: hidden;
+}
+
+.dark-size {
+  background-image: radial-gradient(circle at center, #3c3e43, black);
 }
