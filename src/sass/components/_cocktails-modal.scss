@@ -1,16 +1,18 @@
 .cocktails-modal {
   position: absolute;
   font-family: 'Poppins', sans-serif;
-  top: 50%;
+  top: 10%;
   left: 50%;
   width: 320px;
   padding: 40px 20px;
   color: $black-color;
   background-color: $white-color;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   @media screen and (min-width: 768px) {
     width: 715px;
     padding: 40px 28px 28px 28px;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
