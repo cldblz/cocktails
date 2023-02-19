@@ -4,19 +4,20 @@ import { renderCocktail } from "./render_function_for_cocktail";
 document.addEventListener('DOMContentLoaded', generateCocktails)
 
 // Todo: fix this
-async function generateCocktails(){
-  let listOfCocktails = '';
-  const windowWidth = window.innerWidth;
-  let cocktailCount = 3
-  if(windowWidth >= 768){
-    cocktailCount = 6
+async function generateCocktails() {
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
+  const favoriteCockteils = localFavorite.favoriteCocktails;
+  let drink = {
+    drinks: []
   }
-  if(windowWidth >= 1280){
-    cocktailCount = 9
+  if (favoriteCockteils.length === 1) {
+    document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
+    return
   }
-  for (let i = 1; i <=cocktailCount; i++){
-    let drink = await fetchRandomCocktail();
-    listOfCocktails += renderCocktail(drink)
-  }
-  document.querySelector('.cocktail-list').innerHTML = listOfCocktails
+  const listOfCocktails = favoriteCockteils.forEach(element => { 
+    if (element.idDrink !== 0) {
+      drink.drinks.push(element)
+    }
+  });
+  document.querySelector('.cocktail-list').innerHTML = renderCocktail(drink).join('');
 }

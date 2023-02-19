@@ -3,7 +3,7 @@
 }
 
 .main-section {
-  margin:  60px auto;
+  margin: 60px auto;
 
   .base-title {
     text-align: center;
@@ -56,9 +56,14 @@
 }
 
 .favorite-ingredients {
-
   .button-wrap {
     justify-content: space-between;
     width: 100%;
   }
+}
+
+.cocktail-item__learn-more,
+.cocktail-item__remove {
+  transition: color 250ms $timing-function,
+    background-color 250ms $timing-function;
 }

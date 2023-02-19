@@ -1,16 +1,21 @@
 import IconHeart from '../images/icons.svg';
+import { openIngredientsModal } from './modal-ingredients';
 
-const renderIngredients = () => {
-  const name = 'Campari';
-  const details = 'Campari';
+const modalIngredientsListM = document.querySelector('.card-list');
+modalIngredientsListM.addEventListener('click', openIngredientsModal);
+
+
+const renderIngredients = (element) => {
+  const name = element.nameIngredient;
+  const details = element.typeIngredient;
 
   return `
     <div class="cocktail-list__cocktail-item">
       <div class='card-item__info'>
         <p class="card-item__name">${name}</p>
         <p class="card-item__details">${details}</p>
-        <div class="button-wrap">
-          <button type="button" class="cocktail-item__learn-more">Learn more</button>
+        <div data-ingredient-name="${name}" class="button-wrap">
+          <button type="button" class="cocktail-item__learn-more js-ingredients-modal">Learn more</button>
           <button type="button" class="cocktail-item__remove">Remove
             <svg class="svg" width="21" height="19">
               <use href="${IconHeart}#icon-heart-filled"></use>
@@ -24,16 +29,24 @@ const renderIngredients = () => {
 
 const getRandomIngredients = (htmlEl) => {
   // Todo: get data
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
+  console.log(localFavorite);
+  const favoriteIngredients = localFavorite.favoriteIngrediants;
   let content = '';
-  for (let i = 0; i < 3; i++) {
-    content += renderIngredients();
+  if (favoriteIngredients.length === 0) {
+    document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
+    return
   }
+  favoriteIngredients.forEach(element => {
+    content += renderIngredients(element);
+  });
 
   htmlEl.innerHTML = content;
+
 }
 
 const init = () => {
-  const ingredientsEl = document.querySelector('.ingredients__JS');
+  const ingredientsEl = document.querySelector('.ingredients__js');
 
   if (ingredientsEl) {
     getRandomIngredients(ingredientsEl);
