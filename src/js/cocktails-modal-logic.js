@@ -7,7 +7,8 @@ const closeCocktailsModalBtn = document.querySelector(
 );
 const drinkInfo = document.querySelector('.cocktails-modal-content-wrap');
 const cocktailsList = document.querySelector('.cocktail-list');
-const docBody = document.querySelector('body')
+
+const docBody = document.querySelector('body');
 
 export function toggleModal() {
   cocktailsModal.classList.toggle('is-hidden');
