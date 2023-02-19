@@ -1,3 +1,4 @@
+import { addCocktailToLocalStorage, removeCocktailFromLocalStorage } from './add-to-remove-localstorage';
 import { fetchDrinkById } from './fetchFunction';
 
 const cocktailsModal = document.querySelector('[data-cocktails-modal]');
@@ -6,6 +7,7 @@ const closeCocktailsModalBtn = document.querySelector(
 );
 const drinkInfo = document.querySelector('.cocktails-modal-content-wrap');
 const cocktailsList = document.querySelector('.cocktail-list');
+
 const docBody = document.querySelector('body');
 
 export function toggleModal() {
@@ -16,6 +18,12 @@ export function toggleModal() {
 closeCocktailsModalBtn.addEventListener('click', toggleModal);
 cocktailsModal.addEventListener('click', e => {
   if (e.target !== cocktailsModal) {
+    if (e.target.classList.contains('add-to-favorite')) {
+      addCocktailToLocalStorage(e)
+    }
+    if (e.target.classList.contains('remove-from-favorite')) {
+      removeCocktailFromLocalStorage(e)
+    }
     return;
   }
   toggleModal();
@@ -23,6 +31,7 @@ cocktailsModal.addEventListener('click', e => {
 
 export async function renderDrinkInfo(data) {
   const drink = data.drinks[0];
+  
 
   const ingArr = [];
   let liMarkup;
@@ -59,17 +68,36 @@ export async function renderDrinkInfo(data) {
         </ul>
       </div>`;
 
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
+  const favoriteCocktail = localFavorite.favoriteCocktails.map(el => {
+    return el.idDrink;
+  });
+  if(favoriteCocktail.includes(Number(drink.idDrink))){
+    document.querySelector('.cocktails-modal-favorite').classList.remove('add-to-favorite')
+    document.querySelector('.cocktails-modal-favorite').classList.add('remove-from-favorite')
+    document.querySelector('.cocktails-modal-favorite').innerText = 'Remove from favorite';
+  }else{
+    document.querySelector('.cocktails-modal-favorite').classList.add('add-to-favorite')
+    document.querySelector('.cocktails-modal-favorite').classList.remove('remove-from-favorite')
+    document.querySelector('.cocktails-modal-favorite').innerText = 'Add to favorite';
+  }
+
   drinkInfo.innerHTML = markup;
 }
 
 export async function openCocktailsModal(e) {
   if (e.target.classList.contains('cocktail-item__learn-more')) {
-    const elemId = e.target.parentNode.dataset.iddrink;
+    const elemId = e.target.parentNode.dataset.idDrink;
+    document.querySelector('.cocktails-modal').dataset.idDrink = elemId;
     const foundedDrink = await fetchDrinkById(elemId);
     renderDrinkInfo(foundedDrink);
     toggleModal();
-  } else if (e.target.classList.contains('cocktail-item__remove')) {
-  } else if (e.target.classList.contains('cocktail-item__add-to')) {
+  }
+  if(e.target.className == 'cocktail-item__add-to'){
+    addCocktailToLocalStorage(e)
+  }
+  if(e.target.className == 'cocktail-item__remove'){
+    removeCocktailFromLocalStorage(e)
   }
 }
 
