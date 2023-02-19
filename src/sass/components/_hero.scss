@@ -211,7 +211,7 @@ display: none;
   align-items: center;
   justify-content: center;
   @include tablet {
-    transition: transform 400ms linear;
+    transition: transform 250ms linear;
     
     &:hover{
       transform: scale(1.7) rotate(1turn);
@@ -238,20 +238,4 @@ display: none;
   }
 }
 
-// .hero__item {
-//   transition: transform 400ms linear;
-//   color: (--alfavito-color);
 
-//   &:hover {
-//     transform: scale(1.7);
-//     color: var(--button-color-orange);
-//   }
-
-//   @include mq(tab) {
-//     @include fonts($fs: 14px, $fw: 700, $lh: 1.5, $ls: 0.02em);
-//     padding: 3px;
-//   }
-//   @include mq(desc) {
-//     @include fonts($fs: 24px, $fw: null, $lh: null, $ls: null);
-//   }
-// }
