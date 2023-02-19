@@ -60,5 +60,6 @@
   .button-wrap {
     justify-content: space-between;
     width: 100%;
+    transition: $timing-function;
   }
 }
