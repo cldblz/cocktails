@@ -33,7 +33,7 @@ const getRandomIngredients = (htmlEl) => {
 }
 
 const init = () => {
-  const ingredientsEl = document.querySelector('.ingredients__JS');
+  const ingredientsEl = document.querySelector('.ingredients__js');
 
   if (ingredientsEl) {
     getRandomIngredients(ingredientsEl);
