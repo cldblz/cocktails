@@ -1,12 +1,14 @@
 import { fetchDrinkById } from './fetchFunction';
+import { emtyObjectForLocalStorage } from './modal-ingredients'
 const svg = require('../images/icons.svg');
 
-class cokctailToFavorite {
+
+export class cokctailToFavorite {
   constructor(drink) {
     this.idDrink = Number(drink.drinks[0].idDrink);
-    this.imgSrc = drink.drinks[0].strDrinkThumb;
-    this.nameDrink = drink.drinks[0].strDrink;
-    this.recipteDrink = drink.drinks[0].strInstructions;
+    this.strDrinkThumb = drink.drinks[0].strDrinkThumb;
+    this.strDrink = drink.drinks[0].strDrink;
+    this.strInstructions = drink.drinks[0].strInstructions;
     this.ingrediant = [];
     for (let i = 1; i <= 15; i++) {
       let ingrediantObj = { measure: '', ingrediantName: '' };
@@ -97,4 +99,33 @@ export function removeCocktailFromLocalStorage(event) {
       `[data-id-drink = '${drinkId}'] .cocktails-modal-favorite`
     ).innerText = 'Add to favorite';
   }
+}
+
+
+export function addIngredientToLocalStorage() {
+  let localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
+  localFavorite.favoriteIngrediants.push(new ingredientFavorite(emtyObjectForLocalStorage))
+  localStorage.setItem('favoriteList', JSON.stringify(localFavorite))
+  document.querySelector('.drink-controller-btn--name').classList.remove('add-to-favorite-ingredient')
+  document.querySelector('.drink-controller-btn--name').classList.add('remove-from-favorite-ingredient')
+  document.querySelector('.drink-controller-btn--name').innerText = 'Remove from favorite'
+}
+
+export function removeIngredientFromLocalStorage(event){
+  const idIngredient = Number(event.target.parentNode.dataset.favoriteController)
+  console.log(idIngredient);
+  let localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
+  console.log(localFavorite);
+  localFavorite.favoriteIngrediants = localFavorite.favoriteIngrediants.filter(
+    el => {
+      if (el.idIngredient !== idIngredient) {
+        return el;
+      }
+    }
+  );
+  console.log(localFavorite);
+  localStorage.setItem('favoriteList', JSON.stringify(localFavorite))
+  document.querySelector('.drink-controller-btn--name').classList.add('add-to-favorite-ingredient')
+  document.querySelector('.drink-controller-btn--name').classList.remove('remove-from-favorite-ingredient')
+  document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
 }
