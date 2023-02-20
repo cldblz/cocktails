@@ -26,9 +26,9 @@ async function onClickMobile(e) {
     mobileSelect.classList.add('active');
 
     cocktailList.innerHTML = '';
-    const responce = await fetchDrinkByLetter(e.target.textContent);
+    const response = await fetchDrinkByLetter(e.target.textContent);
     
-    if (responce.drinks === null) {
+    if (response.drinks === null) {
         titleCoctail.textContent = "Sorry, we didn't find any cocktail for you";
         notFound.innerHTML = `<svg
           class="icon-not_found"
@@ -41,15 +41,15 @@ async function onClickMobile(e) {
       }
       notFound.innerHTML = '';
       titleCoctail.textContent = 'Searching results';
-      const markup = await renderCocktail(responce);
+      const markup = await renderCocktail(response);
       cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
   }
 }
 const onClick = async e => {
   if (e.target.nodeName === 'LI') {
     cocktailList.innerHTML = '';
-    const responce = await fetchDrinkByLetter(e.target.textContent);
-    if (responce.drinks === null) {
+    const response = await fetchDrinkByLetter(e.target.textContent);
+    if (response.drinks === null) {
       titleCoctail.textContent = "Sorry, we didn't find any cocktail for you";
       notFound.innerHTML = `<svg
         class="icon-not_found"
@@ -62,7 +62,7 @@ const onClick = async e => {
     }
     notFound.innerHTML = '';
     titleCoctail.textContent = 'Searching results';
-    const markup = await renderCocktail(responce);
+    const markup = await renderCocktail(response);
     cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
   }
 };
