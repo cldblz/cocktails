@@ -9,23 +9,23 @@
 
         <!---------------------------------------------------------- navigation -------------------------------->
         <ul class="navigation__list">
-          <li class="navigation__item">
+          <li class="navigation__item dark-theme-text">
             <a class="navigation__link" href="index.html">Home</a>
           </li>
           <li class="navigation__item drop__item">
-            <p class="favorite-text">Favorite</p>
+            <p class="favorite-text dark-theme-text">Favorite</p>
 
             <div class="favorite__items">
-              <div class="navigation-drop__item">
+              <div class="navigation-drop__item dark-theme-text">
                 <a
-                  class="navigation-drop__link"
+                  class="navigation-drop__link dark-theme-text"
                   href="./favorite-cocktails.html"
                   >Favorite cocktails</a
                 >
               </div>
-              <div class="navigation-drop__item">
+              <div class="navigation-drop__item dark-theme-text">
                 <a
-                  class="navigation-drop__link"
+                  class="navigation-drop__link dark-theme-text"
                   href="./favorite-ingredients.html"
                   >Favorite ingredients</a
                 >
@@ -58,7 +58,7 @@
         <!---------------------------------------------------------------header  SWITCHER ------------------------------->
         <ul class="header-switcher">
           <li
-            class="header-switcher-light"
+            class="header-switcher-light dark-theme-text"
             data-header-text-color-switcher-light
           >
             Light
@@ -115,7 +115,7 @@
         <div class="burger-wrapper">
           <ul class="burger-switcher">
             <li
-              class="burger-switcher-light"
+              class="burger-switcher-light dark-theme-text"
               data-burger-text-color-switcher-light
             >
               Light
@@ -140,34 +140,38 @@
           <div>
             <!------------------------------------------------------------------burger menu INPUT -------------------------------->
             <div class="burger-input-wrapper">
-              <input type="text" class="burger-input" placeholder="Search" />
-              <button
-                type="submit"
-                class="burger-search-button"
-                data-burger-submit
-              >
-                <svg
-                  class="input-search-icon"
-                  width="24"
-                  height="24"
-                  aria-label="Burger menu search"
-                >
-                  <use href="./images/icons.svg#icon-search"></use>
-                </svg>
-              </button>
+              <form class="header-form" data-burger-submit>
+                <input
+                  type="search"
+                  class="burger-input"
+                  name="burgerinput"
+                  placeholder="Search"
+                  data-burger-input
+                />
+                <button type="submit" class="burger-search-button">
+                  <svg
+                    class="input-search-icon"
+                    width="24"
+                    height="24"
+                    aria-label="Burger menu search"
+                  >
+                    <use href="./images/icons.svg#icon-search"></use>
+                  </svg>
+                </button>
+              </form>
             </div>
             <!----------------------------------------------------------------- MOBILE NAV MENU ----------------------------->
             <ul class="mobile-menu-navigation__list">
               <li class="mobile-menu-navigation__item">
-                <a class="mobile-navigation__link" href="index.html">Home </a>
+                <a
+                  class="mobile-navigation__link dark-theme-text"
+                  href="index.html"
+                  >Home
+                </a>
               </li>
-              <li class="mobile-menu-navigation__item">
-                <p class="burger-favorite-text">Favorite</p>
-                <button
-                  type="button"
-                  class="burger-menu-arrow"
-                  data-burger-menu-arrow
-                >
+              <li class="mobile-menu-navigation__item" data-burger-menu-arrow>
+                <p class="burger-favorite-text dark-theme-text">Favorite</p>
+                <button type="button" class="burger-menu-arrow">
                   <svg
                     class="burger-menu-arrow-icon"
                     width="24"
@@ -180,13 +184,15 @@
               </li>
               <div class="burger-favorite__items" data-burger-menu-favorite>
                 <div class="burger-drop__item">
-                  <a class="burger-drop__link" href="./favorite-cocktails.html"
+                  <a
+                    class="burger-drop__link dark-theme-text"
+                    href="./favorite-cocktails.html"
                     >Favorite cocktails</a
                   >
                 </div>
                 <div class="burger-drop__item">
                   <a
-                    class="burger-drop__link"
+                    class="burger-drop__link dark-theme-text"
                     href="./favorite-ingredients.html"
                     >Favorite ingredients</a
                   >
