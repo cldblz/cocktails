@@ -1,5 +1,6 @@
 import { fetchDrinkById } from './fetchFunction';
 import { emtyObjectForLocalStorage } from './modal-ingredients'
+import { renderCocktail } from './render_function_for_cocktail';
 const svg = require('../images/icons.svg');
 
 
@@ -43,15 +44,19 @@ export async function addCocktailToLocalStorage(event) {
   localFavorite.favoriteCocktails.push(cocktail);
   localStorage.setItem('favoriteList', JSON.stringify(localFavorite));
 
-  document.querySelector(
-    `[data-id-drink = '${drinkId}'] .cocktail-item__add-to`
-  ).className = 'cocktail-item__remove';
-  document.querySelector(
-    `[data-id-drink = '${drinkId}'] .cocktail-item__remove`
-  ).innerHTML = `Remove
-    <svg class="svg" width="21" height="19">
-        <use href="${svg}#icon-heart-filled"></use>
-    </svg>`;
+  if(event.target.parentNode.parentNode.parentNode.classList.contains('main-section')){
+    document.querySelector('.cocktail-list').innerHTML += renderCocktail(drink)
+  }else{
+    document.querySelector(
+      `[data-id-drink = '${drinkId}'] .cocktail-item__add-to`
+    ).className = 'cocktail-item__remove';
+    document.querySelector(
+      `[data-id-drink = '${drinkId}'] .cocktail-item__remove`
+    ).innerHTML = `Remove
+      <svg class="svg" width="21" height="19">
+          <use href="${svg}#icon-heart-filled"></use>
+      </svg>`;
+  }
 
   if (event.target.classList.contains('add-to-favorite')) {
     document
@@ -98,6 +103,19 @@ export function removeCocktailFromLocalStorage(event) {
     document.querySelector(
       `[data-id-drink = '${drinkId}'] .cocktails-modal-favorite`
     ).innerText = 'Add to favorite';
+  } 
+
+  if(event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section') || event.target.parentNode.parentNode.parentNode.classList.contains('main-section')){
+    const cocktailsList = document.querySelector(".cocktail-list")
+    for (const childItem of cocktailsList.children) {
+      for (const child of childItem.children){
+        if(child.dataset.idDrink !== undefined){
+          if (child.dataset.idDrink === event.target.parentNode.dataset.idDrink){
+            childItem.remove()
+          }
+        }
+      }
+    }
   }
 }
 
