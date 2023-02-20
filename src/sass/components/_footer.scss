@@ -1,14 +1,21 @@
+body {
+  position: relative;
+}
+
 .footer {
     @include mobile {
-      width: 100vw;
+      min-width: 100%;
     }
     @include tablet {
-      width: 100vw;
+      min-width: 100%;
     }
     @include desktop {
-      width: 100vw;
+      min-width: 100%;
     }
+    position: absolute;
+    bottom: 0;
     height: 110px;
     background-color: $grapefruit-color;
-    margin-top: 60px;
+    transition: bottom 250ms $timing-function;
   }
+  

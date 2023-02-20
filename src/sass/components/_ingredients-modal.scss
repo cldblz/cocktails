@@ -1,27 +1,27 @@
 .modal-drink-ingredients {
   overflow-y: scroll;
+  overflow-x: hidden;
+
   position: absolute;
   font-family: 'Poppins', 'sans-serif';
   top: 10%;
   left: 50%;
- width: 320px;
-  // height: 100%;
+  width: 320px;
+  // height: 100vh;
 
   padding: 40px 20px;
   color: $black-color;
   background-color: $white-color;
   transform: translate(-50%, -0%);
   @media screen and (min-width: 768px) {
-    transform: translate(-50%, -50%);
     top: 50%;
-    width: 715px;
+    transform: translate(-50%, -50%);
+
     padding: 40px 28px 28px 28px;
-    
-    overflow-y: visible;
+    height: 557px;
+    width: 715px;
+    // min-height: 100%;
   }
-
- 
-
 }
 
 .button-modal-close {
@@ -142,14 +142,14 @@
   line-height: 1.62;
 }
 
-.classification {
-  transition: 250ms color $timing-function;
-  cursor: pointer;
-  &:hover,
-  &:focus {
-    color: $auxiliary-orange-color;
-  }
-}
+// .classification {
+//   transition: 250ms color $timing-function;
+//   cursor: pointer;
+//   &:hover,
+//   &:focus {
+//     color: $auxiliary-orange-color;
+//   }
+// }
 
 .drink-controller-btn {
   background-color: $grapefruit-color;
@@ -161,12 +161,11 @@
     display: block;
     margin: 0 0 0 auto;
     transition: 250ms background-color $timing-function;
-    
   }
   &:hover,
   &:focus {
     background-color: $button-hover-color;
-  
+
     .drink-controller-btn--name {
       color: $grapefruit-color;
     }
