@@ -1,3 +1,4 @@
+import { addIngredientToLocalStorage, removeIngredientFromLocalStorage } from "./add-to-remove-localstorage";
 import { fetchIngredientByName } from "./fetchFunction";
 
 const ingredientsModal = document.querySelector('[data-ingredients-modal]')
@@ -27,6 +28,16 @@ ingredientsModal.addEventListener('click', e => {
 });
 
 
+document.querySelector('.modal-drink-ingredients').addEventListener('click', (event) =>{
+  if(event.target.classList.contains('add-to-favorite-ingredient')){
+    addIngredientToLocalStorage()
+    return
+  }
+  if(event.target.classList.contains('remove-from-favorite-ingredient')){
+    removeIngredientFromLocalStorage(event)
+    return
+  }
+})
 
 export async function openIngredientsModal(e) {
     if (e.target.classList.contains('js-ingredients-modal')) {
@@ -101,6 +112,19 @@ export async function renderIngredientsModal(data) {
           </li>
         </ul>
     `
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
+  const favoriteIngredients = localFavorite.favoriteIngrediants.map((el) =>{
+    return el.idIngredient
+  })
+  if(favoriteIngredients.includes(id)){
+    document.querySelector('.drink-controller-btn--name').classList.remove('add-to-favorite-ingredient')
+    document.querySelector('.drink-controller-btn--name').classList.add('remove-from-favorite-ingredient')
+    document.querySelector('.drink-controller-btn--name').innerText = 'Remove from favorite'
+  }else{
+    document.querySelector('.drink-controller-btn--name').classList.add('add-to-favorite-ingredient')
+    document.querySelector('.drink-controller-btn--name').classList.remove('remove-from-favorite-ingredient')
+    document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
+  }
   document.querySelector('[data-favorite-controller]').dataset.favoriteController = id
     insertModalContainer.innerHTML = markup
 }
