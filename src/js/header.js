@@ -29,7 +29,7 @@ const body = document.querySelector('body'); //--------------------------- пе�
 function bodyThemeReader() {
   const theme = localStorage.getItem("ui-theme")
   console.log(theme);
-  
+
 }bodyThemeReader()
 
 const formHeader = document.querySelector('[data-header-submit]');
@@ -54,9 +54,9 @@ function onClickHeaderThemeSwitcher() {
   headerSwitcherDot.classList.toggle('switcher-dot-left');
   headerTextColorSwitcherLight.classList.toggle('header-switcher-light-revers');
   headerTextColorSwitcherDark.classList.toggle('header-switcher-dark-revers');
-  
+
   body.classList.toggle('dark-size')
-  
+
   if (localStorage.getItem("ui-theme")==="dark"){
     localStorage.setItem("ui-theme", "light");
   }
@@ -74,7 +74,7 @@ function onClickBurgerThemeSwitcher() {
   burgerTextColorSwitcherDark.classList.toggle('header-switcher-dark-revers');
 
   body.classList.toggle('dark-size')
- 
+
   if (localStorage.getItem("ui-theme")==="dark"){
     localStorage.setItem("ui-theme", "light");
   }
@@ -96,7 +96,7 @@ async function onHeaderSubmit(event) {
   console.log(result);
 }
 
-function onBurgerSubmit(event) {
+async function onBurgerSubmit(event) {
   event.preventDefault();
   const drinkName = event.currentTarget.elements.headerinput.value;
 
