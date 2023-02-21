@@ -92,27 +92,17 @@ export async function renderIngredientsModal(data) {
         <ul class="drink-classification-list">
           <li class="drink-classification-item">
             <p class="classification-type classification">
-             ✶ Type: <span class="classification-value"></span>
+             ✶ Contains alcohol: <span class="classification-value">${alcoPresence}</span>
             </p>
           </li>
-          <li class="drink-classification-item">
-            <p class="classification-type classification">
-              ✶ Country of origin:
-              <span class="classification-value n"></span>
-            </p>
-          </li>
+         
           <li class="drink-classification-item">
             <p class="classification-type classification">
               ✶ Alcohol by volume:
-              <span class="classification-value">${alcoVolume}</span>
+              <span class="classification-value">${alcoVolume} %</span>
             </p>
           </li>
-          <li class="drink-classification-item">
-            <p class="classification-type classification">
-              ✶ Flavour:
-              <span class="classification-value"></span>
-            </p>
-          </li>
+         
         </ul>
     `
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
