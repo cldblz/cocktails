@@ -1,5 +1,9 @@
 import { fetchRandomCocktail } from "./fetchFunction";
 import { renderCocktail } from "./render_function_for_cocktail";
+import "./cocktails-modal-logic";
+import { removeCocktailFromLocalStorage } from "./add-to-remove-localstorage";
+import "./theme-switcher";
+import "./header";
 
 document.addEventListener('DOMContentLoaded', generateCocktails)
 
@@ -14,7 +18,7 @@ async function generateCocktails() {
     document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
     return
   }
-  const listOfCocktails = favoriteCockteils.forEach(element => { 
+  const listOfCocktails = favoriteCockteils.forEach(element => {
     if (element.idDrink !== 0) {
       drink.drinks.push(element)
     }

@@ -26,14 +26,14 @@ export class cokctailToFavorite {
   }
 }
 
-class ingredientFavorite{
-    constructor(ingredient){
-        this.idIngredient = Number(ingredient.ingredients[0].idIngredient)
-        this.nameIngredient = ingredient.ingredients[0].strIngredient
-        this.descriptionIngredient = ingredient.ingredients[0].strDescription
-        this.typeIngredient = ingredient.ingredients[0].strType
-        this.alcoholIngredient = ingredient.ingredients[0].strAlcohol
-    }
+class ingredientFavorite {
+  constructor(ingredient) {
+    this.idIngredient = Number(ingredient.ingredients[0].idIngredient)
+    this.nameIngredient = ingredient.ingredients[0].strIngredient
+    this.descriptionIngredient = ingredient.ingredients[0].strDescription
+    this.typeIngredient = ingredient.ingredients[0].strType
+    this.alcoholIngredient = ingredient.ingredients[0].strAlcohol
+  }
 }
 
 export async function addCocktailToLocalStorage(event) {
@@ -44,9 +44,9 @@ export async function addCocktailToLocalStorage(event) {
   localFavorite.favoriteCocktails.push(cocktail);
   localStorage.setItem('favoriteList', JSON.stringify(localFavorite));
 
-  if(event.target.parentNode.parentNode.parentNode.classList.contains('main-section')){
+  if (event.target.parentNode.parentNode.parentNode.classList.contains('main-section')) {
     document.querySelector('.cocktail-list').innerHTML += renderCocktail(drink)
-  }else{
+  } else {
     document.querySelector(
       `[data-id-drink = '${drinkId}'] .cocktail-item__add-to`
     ).className = 'cocktail-item__remove';
@@ -103,14 +103,14 @@ export function removeCocktailFromLocalStorage(event) {
     document.querySelector(
       `[data-id-drink = '${drinkId}'] .cocktails-modal-favorite`
     ).innerText = 'Add to favorite';
-  } 
+  }
 
-  if(event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section') || event.target.parentNode.parentNode.parentNode.classList.contains('main-section')){
+  if (event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section') || event.target.parentNode.parentNode.parentNode.classList.contains('main-section')) {
     const cocktailsList = document.querySelector(".cocktail-list")
     for (const childItem of cocktailsList.children) {
-      for (const child of childItem.children){
-        if(child.dataset.idDrink !== undefined){
-          if (child.dataset.idDrink === event.target.parentNode.dataset.idDrink){
+      for (const child of childItem.children) {
+        if (child.dataset.idDrink !== undefined) {
+          if (child.dataset.idDrink === event.target.parentNode.dataset.idDrink) {
             childItem.remove()
           }
         }
@@ -129,11 +129,12 @@ export function addIngredientToLocalStorage() {
   document.querySelector('.drink-controller-btn--name').innerText = 'Remove from favorite'
 }
 
-export function removeIngredientFromLocalStorage(event){
-  const idIngredient = Number(event.target.parentNode.dataset.favoriteController)
-  console.log(idIngredient);
+export function removeIngredientFromLocalStorage(event) {
+  let idIngredient = Number(event.target.parentNode.dataset.favoriteController)
+  if (event.target.parentNode.dataset.favoriteController === undefined) {
+    idIngredient = Number(event.target.parentNode.dataset.ingredientId)
+  }
   let localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
-  console.log(localFavorite);
   localFavorite.favoriteIngrediants = localFavorite.favoriteIngrediants.filter(
     el => {
       if (el.idIngredient !== idIngredient) {
@@ -141,9 +142,22 @@ export function removeIngredientFromLocalStorage(event){
       }
     }
   );
-  console.log(localFavorite);
   localStorage.setItem('favoriteList', JSON.stringify(localFavorite))
   document.querySelector('.drink-controller-btn--name').classList.add('add-to-favorite-ingredient')
   document.querySelector('.drink-controller-btn--name').classList.remove('remove-from-favorite-ingredient')
   document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
+  if (event.target.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section') || event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section')) {
+    const ingredientList = document.querySelector(".card-list")
+    for (const childItem of ingredientList.children) {
+      for (const childCard of childItem.children) {
+        for (const child of childCard.children) {
+          if (child.dataset.ingredientId != undefined) {
+            if (Number(child.dataset.ingredientId) === idIngredient) {
+              childItem.remove()
+            }
+          }
+        }
+      }
+    }
+  }
 }
