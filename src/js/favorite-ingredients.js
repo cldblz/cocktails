@@ -33,13 +33,13 @@ const renderIngredients = (element) => {
 const getRandomIngredients = (htmlEl) => {
   // Todo: get data
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
-  if (localFavorite === null || localFavorite.favoriteIngredients.length === 0 || localFavorite.favoriteIngredients.length === 1) {
+  if (localFavorite === null || localFavorite.favoriteIngrediants.length === 0 || localFavorite.favoriteIngrediants.length === 1) {
     document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
     return
   }
   const favoriteIngredients = localFavorite.favoriteIngrediants;
   let content = '';
-  
+
   favoriteIngredients.forEach(element => {
     if (element.idIngredient !== 0) {
       content += renderIngredients(element);
