@@ -6,24 +6,17 @@ const svg = require('../images/icons.svg');
 const burgerMenuOpen = document.querySelector('[data-burger-menu-toggle]');
 const burgerMenu = document.querySelector('[data-burger-menu]');
 
-//--------------------------- перенести в скріпти для боді
-function bodyThemeReader() {
-  const theme = localStorage.getItem('ui-theme');
-  console.log('перенести в скріпти для боді =>', theme);
-}
-bodyThemeReader();
-
 const formHeader = document.querySelector('[data-header-submit]');
 const formBurger = document.querySelector('[data-burger-submit]');
 
 burgerMenuOpen.addEventListener('click', onClickBurger);
-
+const body = document.querySelector('body');
 function onClickBurger() {
   burgerMenuOpen.classList.toggle('is-open');
   burgerMenu.classList.toggle('is-open');
   burgerMenuOpen.setAttribute('aria-expanded', 'true');
 
-  body.classList.toggle('unscroll-body'); //--------------------------- перенести в скріпти для боді
+  body.classList.toggle('unscroll-body');
 }
 
 // -----------submit---------------
@@ -72,9 +65,6 @@ async function onHeaderSubmit(event) {
   titleCoctail.textContent = 'Searching results';
   const markup = await renderCocktail(responce);
   cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
-
-  // const result = await fetchDrinksByName(drinkName);
-  // console.log(result);
 }
 
 async function onBurgerSubmit(event) {
@@ -82,7 +72,6 @@ async function onBurgerSubmit(event) {
   burgerMenuOpen.classList.toggle('is-open');
   burgerMenu.classList.toggle('is-open');
   const drinkName = event.currentTarget.elements.burgerinput.value;
-  // console.log(drinkName);
 
   if (drinkName === '') {
     cocktailList.innerHTML = '';
