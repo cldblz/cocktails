@@ -33,7 +33,6 @@ const renderIngredients = (element) => {
 const getRandomIngredients = (htmlEl) => {
   // Todo: get data
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
-  console.log(localFavorite);
   const favoriteIngredients = localFavorite.favoriteIngrediants;
   let content = '';
   if (favoriteIngredients.length === 0) {

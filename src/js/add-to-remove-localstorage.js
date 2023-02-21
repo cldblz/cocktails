@@ -146,19 +146,12 @@ export function removeIngredientFromLocalStorage(event) {
   document.querySelector('.drink-controller-btn--name').classList.add('add-to-favorite-ingredient')
   document.querySelector('.drink-controller-btn--name').classList.remove('remove-from-favorite-ingredient')
   document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
-  console.log(event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section'));
   if (event.target.parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section') || event.target.parentNode.parentNode.parentNode.parentNode.classList.contains('main-section')) {
     const ingredientList = document.querySelector(".card-list")
     for (const childItem of ingredientList.children) {
-      // console.log(childItem);
       for (const childCard of childItem.children) {
-        // console.log(childCard);
         for (const child of childCard.children) {
-          // console.log(child);
           if (child.dataset.ingredientId != undefined) {
-            console.log(child.dataset.ingredientId);
-            console.log(idIngredient);
-            console.log(child.dataset.ingredientId === idIngredient);
             if (Number(child.dataset.ingredientId) === idIngredient) {
               childItem.remove()
             }
