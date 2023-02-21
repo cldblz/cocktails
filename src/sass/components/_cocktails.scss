@@ -190,6 +190,7 @@ button{
     margin: 15px auto 23px;
     height: 70px;
   }
+  padding: 10px;
   display: flex;
   width: fit-content;
   font-family: 'Roboto', sans-serif;
@@ -200,18 +201,30 @@ button{
 }
 
 .cocktail-title-main{
+  @include mobile{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+  }
+  @include tablet{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+  }
+  @include desktop{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+  }
   margin: 0 auto 60px;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
   line-height: 1.5;
   text-align: center;
 }
 
 .cocktail-item_img{
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .not-found{
