@@ -7,78 +7,81 @@ const closeIngredientsModalBtn = document.querySelector('[data-ingredients-modal
 // console.log(modalIngredientsList);
 
 const insertModalContainer = document.querySelector('.js-insert-modal-container')
- 
+
 export let emtyObjectForLocalStorage = null
 
 
 
 export function toggleIngredientsModal() {
-    ingredientsModal.classList.toggle('is-hidden');
-    ingredientsModal.classList.toggle('modal-open');
+  ingredientsModal.classList.toggle('is-hidden');
+  ingredientsModal.classList.toggle('modal-open');
 }
 
 
 
 closeIngredientsModalBtn.addEventListener('click', toggleIngredientsModal);
 ingredientsModal.addEventListener('click', e => {
-    if (e.target !== ingredientsModal) {
-        return;
-    }
-    toggleIngredientsModal();
+  if (e.target !== ingredientsModal) {
+    return;
+  }
+  toggleIngredientsModal();
 });
 
 
-document.querySelector('.modal-drink-ingredients').addEventListener('click', (event) =>{
-  if(event.target.classList.contains('add-to-favorite-ingredient')){
+document.querySelector('.modal-drink-ingredients').addEventListener('click', (event) => {
+  if (event.target.classList.contains('add-to-favorite-ingredient')) {
     addIngredientToLocalStorage()
     return
   }
-  if(event.target.classList.contains('remove-from-favorite-ingredient')){
+  if (event.target.classList.contains('remove-from-favorite-ingredient')) {
     removeIngredientFromLocalStorage(event)
     return
   }
 })
 
 export async function openIngredientsModal(e) {
-    if (e.target.classList.contains('js-ingredients-modal')) {
-        const elemName = e.target.parentNode.dataset.ingredientName.trim()
-      const foundedIngredient = await fetchIngredientByName(elemName)
-      
-      emtyObjectForLocalStorage = foundedIngredient
+  if (e.target.classList.contains('js-ingredients-modal')) {
+    const elemName = e.target.parentNode.dataset.ingredientName.trim()
+    const foundedIngredient = await fetchIngredientByName(elemName)
+
+    emtyObjectForLocalStorage = foundedIngredient
 
 
-        renderIngredientsModal(foundedIngredient);
-        toggleIngredientsModal()
-    }
+    renderIngredientsModal(foundedIngredient);
+    toggleIngredientsModal()
+  }
+  if (e.target.classList.contains('cocktail-item__remove')) {
+    removeIngredientFromLocalStorage(e)
+  }
 }
 
 
 
 
 export async function renderIngredientsModal(data) {
-    const filteredIngredientObj = data.ingredients[0]
-    // console.log(filteredIngredientObj);
-    const keys = Object.keys(filteredIngredientObj);
+  const filteredIngredientObj = data.ingredients[0]
+  // console.log(filteredIngredientObj);
+  const keys = Object.keys(filteredIngredientObj);
 
-    for (const key of keys) {
+  for (const key of keys) {
 
-        if (filteredIngredientObj[key] === null || filteredIngredientObj[key] === undefined) {
-            filteredIngredientObj[key] = '';
-        }
+    if (filteredIngredientObj[key] === null || filteredIngredientObj[key] === undefined) {
+      filteredIngredientObj[key] = '';
+    }
   }
-  
-    // console.log(filteredIngredientObj);
-    const {
+
+  // console.log(filteredIngredientObj);
+  const {
     idIngredient: id,
     strABV: alcoVolume,
     strAlcohol: alcoPresence,
     strDescription: ingredientDescription,
     strIngredient: ingredientName,
     strType: ingredientType,
-    } = filteredIngredientObj
-    
+  } = filteredIngredientObj
 
-    const markup = `
+
+  const markup = `
      <h2 class="drink-name">${ingredientName}</h2>
       <h3 class="drink-category">${ingredientType}</h3>
         <div class="drink-category--wrapper">
@@ -113,20 +116,20 @@ export async function renderIngredientsModal(data) {
         </ul>
     `
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
-  const favoriteIngredients = localFavorite.favoriteIngrediants.map((el) =>{
+  const favoriteIngredients = localFavorite.favoriteIngrediants.map((el) => {
     return el.idIngredient
   })
-  if(favoriteIngredients.includes(id)){
+  if (favoriteIngredients.includes(Number(id))) {
     document.querySelector('.drink-controller-btn--name').classList.remove('add-to-favorite-ingredient')
     document.querySelector('.drink-controller-btn--name').classList.add('remove-from-favorite-ingredient')
     document.querySelector('.drink-controller-btn--name').innerText = 'Remove from favorite'
-  }else{
+  } else {
     document.querySelector('.drink-controller-btn--name').classList.add('add-to-favorite-ingredient')
     document.querySelector('.drink-controller-btn--name').classList.remove('remove-from-favorite-ingredient')
     document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
   }
   document.querySelector('[data-favorite-controller]').dataset.favoriteController = id
-    insertModalContainer.innerHTML = markup
+  insertModalContainer.innerHTML = markup
 }
 
 

@@ -9,15 +9,18 @@
   <body>
     <include src="./partials/header.html"></include>
     <section class="main-section container flex-1">
-      <h1 class="base-title">Favorite cocktails</h1>
+      <h1 class="base-title dark-theme-text">Favorite cocktails</h1>
       <ul class="cocktail-list ingredients__js"></ul>
       <div class="not-found"></div>
       <div class="pages"></div>
+      <include src="./partials/cocktails-modal.html"></include>
     </section>
 
     <include src="./partials/footer.html"></include>
-    <include src="./partials/cocktails-modal.html"></include>
+
     <include src="./partials/ingredients-modal.html"></include>
     <script type="module" src="./js/favorite-cocktails.js"></script>
+  
+    <!-- <script type="module" src="./js/index.js"></script> -->
   </body>
 </html>
