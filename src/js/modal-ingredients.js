@@ -80,6 +80,7 @@ export async function renderIngredientsModal(data) {
     strType: ingredientType,
   } = filteredIngredientObj
 
+  const alcoNumber = alcoVolume || 0
 
   const markup = `
      <h2 class="drink-name">${ingredientName}</h2>
@@ -88,21 +89,21 @@ export async function renderIngredientsModal(data) {
           <div class="drink-category--line"></div>
         </div>
         <p class="drink-description">${ingredientDescription}</p>
-  
+
         <ul class="drink-classification-list">
           <li class="drink-classification-item">
             <p class="classification-type classification">
              ✶ Contains alcohol: <span class="classification-value">${alcoPresence}</span>
             </p>
           </li>
-         
+
           <li class="drink-classification-item">
             <p class="classification-type classification">
               ✶ Alcohol by volume:
-              <span class="classification-value">${alcoVolume} %</span>
+              <span class="classification-value">${alcoNumber} %</span>
             </p>
           </li>
-         
+
         </ul>
     `
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
