@@ -15,6 +15,12 @@ const darkThemeText = document.querySelectorAll('.dark-theme-text');
 const hnavigationDropItem = document.querySelectorAll('.navigation-drop__item');
 const favoriteItems = document.querySelectorAll('.favorite__items');
 const darkThemeGreyText = document.querySelectorAll('dark-theme-grey-text');
+const mobileMenu = document.querySelector('.mobile-menu');
+const burgerMenuBtnIcon = document.querySelector('.burger-menu-btn-icon');
+const burgerMenuArrowIcon = document.querySelector('.burger-menu-arrow-icon');
+const burgerThemeSwitcher = document.querySelector(
+  '[data-burger-theme-switcher]'
+);
 
 function checkTheme() {
   if (localStorage.getItem('ui-theme') === 'dark') {
@@ -57,15 +63,11 @@ function headerThemeSwitcher() {
   );
   darkThemeText.forEach(item => item.classList.toggle('dark-theme'));
   darkThemeGreyText.forEach(item => item.classList.toggle('dark-theme-grey'));
+  burgerMenuBtnIcon.classList.toggle('burger-menu-btn-icon-dark');
+  mobileMenu.classList.toggle('dark-size');
 }
 
 // ---------------------------------------------------- for burger
-const mobileMenu = document.querySelector('.mobile-menu');
-const burgerMenuBtnIcon = document.querySelector('.burger-menu-btn-icon');
-const burgerMenuArrowIcon = document.querySelector('.burger-menu-arrow-icon');
-const burgerThemeSwitcher = document.querySelector(
-  '[data-burger-theme-switcher]'
-);
 
 burgerThemeSwitcher.addEventListener('click', onClickBurgerThemeSwitcher);
 
@@ -98,3 +100,6 @@ function onBurgerThemeSwitcher() {
   darkThemeGreyText.forEach(item => item.classList.toggle('dark-theme-grey'));
   mobileMenu.classList.toggle('dark-size');
 }
+
+// dark-theme-tex - додати туди не текст має ставати білим
+// dark-theme-grey-text додати туди де текст має бути сірим
