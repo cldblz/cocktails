@@ -415,6 +415,10 @@
   color: $grapefruit-color;
 }
 
+.burger-switcher-light-revers {
+  color: $white-color;
+}
+
 .switcher-button-dark {
   background-color: $grapefruit-color;
   outline: 1px solid $white-color;
@@ -422,10 +426,6 @@
 
 .switcher-dot-dark {
   background-color: $white-color;
-}
-
-.dark-theme {
-  color: $white-color;
 }
 
 .favorite__items-dark {
@@ -446,4 +446,12 @@
 
 .burger-menu-btn-icon-dark {
   fill: white;
+}
+
+.dark-theme {
+  color: $white-color;
+}
+
+.dark-theme-grey {
+  color: $gray-color;
 }
