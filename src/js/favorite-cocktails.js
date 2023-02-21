@@ -14,13 +14,13 @@ async function generateCocktails() {
     document.querySelector('.not-found').innerText = "You haven't added any favorite cocktails yet"
     return
   }
-  const favoriteCockteils = localFavorite.favoriteCocktails;
+  const favoriteCocktails = localFavorite.favoriteCocktails;
   let drink = {
     drinks: []
   }
   
   
-  const listOfCocktails = favoriteCockteils.forEach(element => {
+  const listOfCocktails = favoriteCocktails.forEach(element => {
     if (element.idDrink !== 0) {
       drink.drinks.push(element)
     }
