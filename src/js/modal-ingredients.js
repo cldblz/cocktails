@@ -1,6 +1,6 @@
 import { addIngredientToLocalStorage, removeIngredientFromLocalStorage } from "./add-to-remove-localstorage";
 import { fetchIngredientByName } from "./fetchFunction";
-import "./theme-switcher"
+
 
 const ingredientsModal = document.querySelector('[data-ingredients-modal]')
 const closeIngredientsModalBtn = document.querySelector('[data-ingredients-modal-close]');
