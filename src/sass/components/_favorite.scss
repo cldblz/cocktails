@@ -50,6 +50,7 @@
     display: grid;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 28px;
 
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
