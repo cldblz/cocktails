@@ -3,7 +3,11 @@
 }
 
 .main-section {
-  margin: 60px auto 170px;
+  padding: 60px 0 170px;
+
+  &--cocktails {
+      padding-top: 32px;
+    }
 
   .base-title {
     text-align: center;
@@ -33,6 +37,8 @@
     }
 
     &__details {
+      display: block;
+      height: 16.1px;
       font-weight: 600;
       font-size: 14px;
       text-transform: uppercase;
@@ -53,6 +59,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
 }
 
 .favorite-ingredients {
