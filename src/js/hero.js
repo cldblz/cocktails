@@ -1,5 +1,6 @@
 import { fetchDrinkByLetter } from './fetchFunction';
 import { renderCocktail } from './render_function_for_cocktail';
+import { sliceArray, resetPagination, generatePagination } from './pagination';
 
 const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
 if (localFavorite == null) {
@@ -20,6 +21,7 @@ const notFound = document.querySelector('.not-found');
 const desktopFilter = document.querySelector('.wrapper-tablet-desktop-filter');
 
 async function onClickMobile(e) {
+  resetPagination();
   if (e.target.nodeName === 'LI') {
     spanHeroMobile.textContent = e.target.textContent;
     mobileFilter.classList.add('visually-hidden');
@@ -27,25 +29,28 @@ async function onClickMobile(e) {
 
     cocktailList.innerHTML = '';
     const response = await fetchDrinkByLetter(e.target.textContent);
-    
+
     if (response.drinks === null) {
-        titleCoctail.textContent = "Sorry, we didn't find any cocktail for you";
-        notFound.innerHTML = `<svg
+      titleCoctail.textContent = "Sorry, we didn't find any cocktail for you";
+      notFound.innerHTML = `<svg
           class="icon-not_found"
           width="280"
           height="308"              
         >
           <use href="${svg}#icon-not-found"></use>
         </svg>`;
-        return;
-      }
-      notFound.innerHTML = '';
-      titleCoctail.textContent = 'Searching results';
-      const markup = await renderCocktail(response);
-      cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
+      return;
+    }
+    notFound.innerHTML = '';
+    titleCoctail.textContent = 'Searching results';
+    generatePagination(response);
+    const slicedArray = sliceArray(response.drinks);
+    const markup = await renderCocktail(slicedArray);
+    cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
   }
 }
 const onClick = async e => {
+  resetPagination();
   if (e.target.nodeName === 'LI') {
     cocktailList.innerHTML = '';
     const response = await fetchDrinkByLetter(e.target.textContent);
@@ -58,11 +63,14 @@ const onClick = async e => {
       >
         <use href="${svg}#icon-not-found"></use>
       </svg>`;
+      document.querySelector('.pagination').innerHTML = '';
       return;
     }
     notFound.innerHTML = '';
     titleCoctail.textContent = 'Searching results';
-    const markup = await renderCocktail(response);
+    generatePagination(response);
+    const slicedArray = sliceArray(response.drinks);
+    const markup = await renderCocktail(slicedArray);
     cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
   }
 };

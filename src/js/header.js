@@ -1,5 +1,7 @@
 import { fetchDrinksByName } from './fetchFunction';
 import { renderCocktail } from './render_function_for_cocktail';
+import { sliceArray, resetPagination, generatePagination } from './pagination';
+
 
 const svg = require('../images/icons.svg');
 
@@ -30,6 +32,7 @@ const titleCoctail = document.querySelector('.cocktail-title-main');
 
 async function onHeaderSubmit(event) {
   event.preventDefault();
+  resetPagination();
   const drinkName = event.currentTarget.elements.headerinput.value;
 
   if (drinkName === '') {
@@ -42,9 +45,11 @@ async function onHeaderSubmit(event) {
       >
       <use href="${svg}#icon-not-found"></use>
       </svg>`;
+    document.querySelector('.pagination').innerHTML = '';
     return;
   }
   const responce = await fetchDrinksByName(drinkName);
+  
 
   if (responce.drinks === null) {
     cocktailList.innerHTML = '';
@@ -57,18 +62,21 @@ async function onHeaderSubmit(event) {
       >
       <use href="${svg}#icon-not-found"></use>
       </svg>`;
+    document.querySelector('.pagination').innerHTML = '';
     return;
   }
-
+  generatePagination(responce);
   notFound.innerHTML = '';
   cocktailList.innerHTML = '';
   titleCoctail.textContent = 'Searching results';
-  const markup = await renderCocktail(responce);
+  const slicedArray = sliceArray(responce.drinks);
+  const markup = await renderCocktail(slicedArray);
   cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
 }
 
 async function onBurgerSubmit(event) {
   event.preventDefault();
+  resetPagination();
   burgerMenuOpen.classList.toggle('is-open');
   burgerMenu.classList.toggle('is-open');
   const drinkName = event.currentTarget.elements.burgerinput.value;
@@ -99,12 +107,14 @@ async function onBurgerSubmit(event) {
       </svg>`;
     return;
   }
-
+  generatePagination(responce);
   notFound.innerHTML = '';
   cocktailList.innerHTML = '';
   titleCoctail.textContent = 'Searching results';
-  const markup = await renderCocktail(responce);
+  const slicedArray = sliceArray(responce.drinks);
+  const markup = await renderCocktail(slicedArray);
   cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
+  body.classList.toggle('unscroll-body');
 }
 
 // -----------burger-menu-favorite---------------

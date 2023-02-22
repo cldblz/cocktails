@@ -1,6 +1,9 @@
+import { createPagination } from './pagination'
+
 const svg = require('../images/icons.svg')
 
-export function renderCocktail(drink){
+export function renderCocktail(drink) {
+    createPagination();
     const drinks = drink.drinks
     const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
         let favoriteCocktail = localFavorite.favoriteCocktails.map((el) => {return el.idDrink})
