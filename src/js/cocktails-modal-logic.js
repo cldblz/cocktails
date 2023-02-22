@@ -100,10 +100,10 @@ export async function openCocktailsModal(e) {
     renderDrinkInfo(foundedDrink);
     toggleModal();
   }
-  if(e.target.className == 'cocktail-item__add-to'){
+  if(e.target.classList.contains('cocktail-item__add-to')){
     addCocktailToLocalStorage(e)
   }
-  if(e.target.className == 'cocktail-item__remove'){
+  if(e.target.classList.contains('cocktail-item__remove')){
     removeCocktailFromLocalStorage(e)
   }
 }

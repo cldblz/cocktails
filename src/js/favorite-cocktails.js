@@ -30,3 +30,29 @@ async function generateCocktails() {
   generatePagination(drink)
   document.querySelector('.cocktail-list').innerHTML = renderCocktail(sliceArray(drink.drinks)).join('');
 }
+
+document.querySelector('.header-input').addEventListener('input', search)
+
+
+function search(event){
+  document.querySelector('.pagination').innerHTML = ''
+  resetPagination()
+  document.querySelector('.not-found').innerText = ''
+  const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
+  const regExprassio = new RegExp(event.target.value)
+  let drink = {
+    drinks: []
+  }
+  localFavorite.favoriteCocktails.forEach((el) =>{
+    if(el.idDrink != 0){
+      if(regExprassio.test(el.strDrink)){
+        drink.drinks.push(el)
+      }
+    }
+  })
+  generatePagination(drink)
+  document.querySelector('.cocktail-list').innerHTML = renderCocktail(sliceArray(drink.drinks)).join('');
+  if(drink.drinks.length === 0){
+    document.querySelector('.not-found').innerText = "Not found cocktail in your favorite"
+  }
+}
