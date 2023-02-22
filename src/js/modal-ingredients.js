@@ -1,10 +1,11 @@
 import { addIngredientToLocalStorage, removeIngredientFromLocalStorage } from "./add-to-remove-localstorage";
 import { fetchIngredientByName } from "./fetchFunction";
+import "./theme-switcher"
 
 const ingredientsModal = document.querySelector('[data-ingredients-modal]')
 const closeIngredientsModalBtn = document.querySelector('[data-ingredients-modal-close]');
-// const modalIngredientsList = document.querySelector('.cocktail-ingredients-list')
-// console.log(modalIngredientsList);
+const modalBody = document.querySelector('.modal-drink-ingredients')
+
 
 const insertModalContainer = document.querySelector('.js-insert-modal-container')
 
@@ -79,16 +80,25 @@ export async function renderIngredientsModal(data) {
     strIngredient: ingredientName,
     strType: ingredientType,
   } = filteredIngredientObj
+  let firstWordofDescription = ""
+  const arrayOfDescriptions =  ingredientDescription.split(' ')
+  const splicedArray = arrayOfDescriptions.splice(0,1)
+  const newDescription = arrayOfDescriptions.join(' ')
+
+  if (splicedArray[0] !== "") {
+    firstWordofDescription = splicedArray[0];
+  }
 
   const alcoNumber = alcoVolume || 0
 
-  const markup = `
+  const markuplight = `
      <h2 class="drink-name">${ingredientName}</h2>
       <h3 class="drink-category">${ingredientType}</h3>
         <div class="drink-category--wrapper">
           <div class="drink-category--line"></div>
         </div>
-        <p class="drink-description">${ingredientDescription}</p>
+       
+        <p class="drink-description"> <span class="modal-first-word-of-description-light">${firstWordofDescription}</span> ${newDescription}</p>
 
         <ul class="drink-classification-list">
           <li class="drink-classification-item">
@@ -106,6 +116,34 @@ export async function renderIngredientsModal(data) {
 
         </ul>
     `
+  const markupdark = `
+     <h2 class="drink-name modal-ingredients-light-color">${ingredientName}</h2>
+      <h3 class="drink-category modal-ingredients-light-color">${ingredientType}</h3>
+        <div class="drink-category--wrapper">
+          <div class="drink-category--line"></div>
+        </div>
+        <p class="drink-description modal-light-grey"> <span class="modal-first-word-of-description-dark">${firstWordofDescription}</span> ${newDescription}</p>
+
+
+        <ul class="drink-classification-list">
+          <li class="drink-classification-item">
+            <p class="classification-type classification modal-ingredients-light-color">
+             ✶ <span class="classification-value modal-light-grey" > Contains alcohol: ${alcoPresence}</span>
+            </p>
+          </li>
+
+          <li class="drink-classification-item">
+            <p class="classification-type classification modal-ingredients-light-color">
+              ✶ 
+              <span class="classification-value modal-light-grey">Alcohol by volume: ${alcoNumber} %</span>
+            </p>
+          </li>
+
+        </ul>
+    `
+
+  
+  
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
   const favoriteIngredients = localFavorite.favoriteIngrediants.map((el) => {
     return el.idIngredient
@@ -120,8 +158,34 @@ export async function renderIngredientsModal(data) {
     document.querySelector('.drink-controller-btn--name').innerText = 'Add to favorite'
   }
   document.querySelector('[data-favorite-controller]').dataset.favoriteController = id
-  insertModalContainer.innerHTML = markup
-}
+  
 
+
+  const savedColor = localStorage.getItem('ui-theme')
+
+  if (savedColor === "light" || savedColor === null) {
+
+    modalBody.style.backgroundColor = '#FCFCFC'
+    closeIngredientsModalBtn.style.fill = '#202025'
+ 
+
+    
+
+    insertModalContainer.innerHTML = markuplight
+
+    
+    
+  }
+  if (savedColor === "dark") {
+
+    modalBody.style.backgroundColor = '#202025';
+    
+    closeIngredientsModalBtn.style.fill = '#FCFCFC';
+    
+    insertModalContainer.innerHTML = markupdark
+    
+   
+  }
+}
 
 

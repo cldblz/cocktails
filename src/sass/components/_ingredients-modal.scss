@@ -10,7 +10,7 @@
   // height: 100vh;
 
   padding: 40px 20px;
-  color: $black-color;
+  
   background-color: $white-color;
   transform: translate(-50%, -0%);
   @media screen and (min-width: 768px) {
@@ -39,12 +39,34 @@
   &__icon {
     position: absolute;
     transition: 250ms fill $timing-function;
+    // fill: $black-color;
   }
   &:hover,
   &:focus {
-    fill: $auxiliary-orange-color;
+    .button-modal-close__icon {
+       fill: $auxiliary-orange-color;
+    }
+   
   }
 }
+
+.button-modal-close-light {
+  &__icon {
+    fill: $black-color;
+  }
+
+}
+
+.button-modal-close-dark {
+
+  &__icon {
+    fill: $white-color; 
+  }
+ 
+  
+}
+
+
 .drink-name {
   font-family: 'Roboto', 'sans-serif';
 
@@ -179,4 +201,39 @@
   letter-spacing: 0.02em;
   color: $white-color;
   transition: 250ms color $timing-function;
+}
+
+.modal-ingredients-light-color {
+  color: $white-color;
+}
+
+.modal-ingredients-fill {
+  fill: $white-color ;
+}
+
+.modal-ingredients-fill-black {
+  fill: $black-color ;
+}
+
+.modal-light-grey {
+  color: #BDBDBD;
+}
+
+
+.modal-first-word-of-description-light {
+   font-family: 'Poppins', 'sans-serif';
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.75;
+    color: $black-color;
+}
+
+.modal-first-word-of-description-dark {
+   font-family: 'Poppins', 'sans-serif';
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.75;
+    color: $white-color;
 }
