@@ -73,3 +73,22 @@
   transition: color 250ms $timing-function,
     background-color 250ms $timing-function;
 }
+
+.not-found {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 3;
+  text-align: center;
+  color: $black-color;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 2.5;
+  }
+  @include desktop {
+    font-size: 32px;
+    line-height: 2.25;
+  }
+}
