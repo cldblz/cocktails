@@ -2,6 +2,7 @@ import IconHeart from '../images/icons.svg';
 import { openIngredientsModal } from './modal-ingredients';
 import "./theme-switcher";
 import "./header";
+import { sliceArray, resetPagination, generatePagination, createPagination } from './pagination';
 
 const modalIngredientsListM = document.querySelector('.card-list');
 modalIngredientsListM.addEventListener('click', openIngredientsModal);
@@ -37,14 +38,26 @@ const getRandomIngredients = (htmlEl) => {
     document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
     return
   }
-  const favoriteIngredients = localFavorite.favoriteIngrediants;
-  let content = '';
+  const favoriteIngredient = localFavorite.favoriteIngrediants;
+  let drink = {
+    drinks: [],
+  };
 
-  favoriteIngredients.forEach(element => {
+  favoriteIngredient.forEach(element => {
+    if (element.idIngredient !== 0) {
+      drink.drinks.push(element);
+    }
+  });
+  generatePagination(drink)
+  const favoriteIngredients = sliceArray(drink.drinks);
+  console.log(favoriteIngredients);
+
+  let content = '';
+  createPagination();
+  favoriteIngredients.drinks.forEach(element => {
     if (element.idIngredient !== 0) {
       content += renderIngredients(element);
     }
-
   });
 
   htmlEl.innerHTML = content;
@@ -52,6 +65,7 @@ const getRandomIngredients = (htmlEl) => {
 }
 
 const init = () => {
+  resetPagination();
   const ingredientsEl = document.querySelector('.ingredients__js');
 
   if (ingredientsEl) {

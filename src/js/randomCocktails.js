@@ -5,6 +5,7 @@ import {
 } from './add-to-remove-localstorage';
 
 import { fetchRandomCocktail, findDrinkById } from './fetchFunction';
+import { generatePagination, sliceArray } from './pagination';
 import { renderCocktail } from './render_function_for_cocktail';
 
 document.addEventListener('DOMContentLoaded', generateCocktails);
@@ -38,7 +39,9 @@ async function generateCocktails() {
     }
     cocktailArr.drinks.push(drink.drinks[0]);
   }
-  const cocktailListArr = renderCocktail(cocktailArr);
+  generatePagination(cocktailArr);
+  const slicedArray = sliceArray(cocktailArr.drinks);
+  const cocktailListArr = renderCocktail(slicedArray);
   document.querySelector('.cocktail-title-main').innerText = 'Cocktails';
   document.querySelector('.cocktail-list').innerHTML = cocktailListArr.join('');
 }
