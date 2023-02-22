@@ -5,10 +5,6 @@
 .main-section {
   padding: 60px 0 170px;
 
-  &--cocktails {
-      padding-top: 32px;
-    }
-
   .base-title {
     text-align: center;
     font-weight: 900;
@@ -16,6 +12,9 @@
     line-height: 1.2;
     margin-bottom: 60px;
 
+    &--cocktails {
+        margin-bottom: 32px;
+      }
     @include tablet {
       font-size: 32px;
     }
