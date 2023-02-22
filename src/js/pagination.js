@@ -11,7 +11,6 @@ let fetchedDrinks;
 let totalCards;
 
 export function generatePagination(res) {
-  console.log(res);
   fetchedDrinks = res;
   totalCards = fetchedDrinks.drinks.length;
 }
@@ -155,20 +154,16 @@ export function sliceArray(array) {
 
 async function drinksRender() {
   const cocktailList = document.querySelector('.cocktail-list');
-  console.log(clickedBtn);
   cocktailList.innerHTML = '';
   const slicedArray = sliceArray(fetchedDrinks.drinks);
-  console.log(slicedArray);
   const markup = await renderCocktail(slicedArray);
   cocktailList.insertAdjacentHTML('beforeend', markup.join(''));
 }
 
 function ingsRender() {
-  console.log(111);
   const ingsList = document.querySelector('.card-list');
   ingsList.innerHTML = '';
   const slicedArray = sliceArray(fetchedDrinks.drinks);
-  console.log(slicedArray);
   let markup = '';
   slicedArray.drinks.forEach(element => {
     markup += renderIngredients(element);

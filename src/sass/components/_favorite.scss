@@ -3,7 +3,7 @@
 }
 
 .main-section {
-  margin: 60px auto 170px;
+  padding: 60px 0 170px;
 
   .base-title {
     text-align: center;
@@ -12,6 +12,9 @@
     line-height: 1.2;
     margin-bottom: 60px;
 
+    &--cocktails {
+        margin-bottom: 32px;
+      }
     @include tablet {
       font-size: 32px;
     }
@@ -33,6 +36,8 @@
     }
 
     &__details {
+      display: block;
+      height: 16.1px;
       font-weight: 600;
       font-size: 14px;
       text-transform: uppercase;
@@ -53,6 +58,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
 }
 
 .favorite-ingredients {
@@ -66,4 +72,23 @@
 .cocktail-item__remove {
   transition: color 250ms $timing-function,
     background-color 250ms $timing-function;
+}
+
+.not-found {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 3;
+  text-align: center;
+  color: $black-color;
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 2.5;
+  }
+  @include desktop {
+    font-size: 32px;
+    line-height: 2.25;
+  }
 }
