@@ -16,7 +16,7 @@ const hnavigationDropItem = document.querySelectorAll('.navigation-drop__item');
 const favoriteItems = document.querySelectorAll('.favorite__items');
 const darkThemeGreyText = document.querySelectorAll('dark-theme-grey-text');
 const mobileMenu = document.querySelector('.mobile-menu');
-const burgerMenuBtnIcon = document.querySelector('.burger-menu-btn-icon');
+const burgerMenuBtnIcon = document.querySelectorAll('.burger-menu-btn-icon');
 const burgerMenuArrowIcon = document.querySelector('.burger-menu-arrow-icon');
 const burgerThemeSwitcher = document.querySelector(
   '[data-burger-theme-switcher]'
@@ -63,7 +63,9 @@ function headerThemeSwitcher() {
   );
   darkThemeText.forEach(item => item.classList.toggle('dark-theme'));
   darkThemeGreyText.forEach(item => item.classList.toggle('dark-theme-grey'));
-  burgerMenuBtnIcon.classList.toggle('burger-menu-btn-icon-dark');
+  burgerMenuBtnIcon.forEach(item =>
+    item.classList.toggle('burger-menu-btn-icon-dark')
+  );
   mobileMenu.classList.toggle('dark-size');
 }
 
@@ -95,7 +97,7 @@ function onBurgerThemeSwitcher() {
   );
   switcherDot.forEach(item => item.classList.toggle('switcher-dot-dark'));
   darkThemeText.forEach(item => item.classList.toggle('dark-theme'));
-  burgerMenuBtnIcon.classList.toggle('burger-menu-btn-icon-dark');
+  // burgerMenuBtnIcon.classList.toggle('burger-menu-btn-icon-dark');
   burgerMenuArrowIcon.classList.toggle('burger-menu-btn-icon-dark');
   darkThemeGreyText.forEach(item => item.classList.toggle('dark-theme-grey'));
   mobileMenu.classList.toggle('dark-size');
