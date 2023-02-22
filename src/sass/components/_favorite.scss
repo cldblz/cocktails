@@ -5,6 +5,10 @@
 .main-section {
   padding: 60px 0 170px;
 
+  &--cocktails {
+      padding-top: 32px;
+    }
+
   .base-title {
     text-align: center;
     font-weight: 900;
@@ -55,6 +59,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
 }
 
 .favorite-ingredients {
