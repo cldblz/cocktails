@@ -116,6 +116,9 @@ export function removeCocktailFromLocalStorage(event) {
         }
       }
     }
+    if(cocktailsList.children.length === 0){
+      document.querySelector('.not-found').innerText = "You haven't added any favorite cocktails yet"
+    }
   }
 }
 
@@ -158,6 +161,9 @@ export function removeIngredientFromLocalStorage(event) {
           }
         }
       }
+    }
+    if(ingredientList.children.length === 0){
+      document.querySelector('.not-found').innerText = "You haven't added any favorite ingredients yet"
     }
   }
 }

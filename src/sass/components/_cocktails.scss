@@ -36,8 +36,22 @@ button{
   border-radius: 4px;
 }
 
-.svg {
-  fill: $white-color;
+.svg-dark-theme{
+  fill: #FCFCFC;
+  pointer-events: none;
+}
+
+.svg-light{
+  fill: #202025;
+  pointer-events: none;
+}
+
+.name-dark{
+  color: #202025;
+}
+
+.name-light{
+  color: #FCFCFC;
 }
 
 .cocktail-item__add-to {
@@ -99,7 +113,7 @@ button{
     width: 141px;
   }
   position: relative;
-  background-color: white;
+  background-color: transparent;
   border-radius: 4px;
   display: flex;
   justify-content: center;
