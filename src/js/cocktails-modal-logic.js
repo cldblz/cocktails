@@ -34,6 +34,7 @@ cocktailsModal.addEventListener('click', e => {
 export async function renderDrinkInfo(data) {
   const drink = data.drinks[0];
   
+  const savedTheme = localStorage.getItem('ui-theme');
 
   const ingArr = [];
   let liMarkup;
@@ -45,16 +46,44 @@ export async function renderDrinkInfo(data) {
       if (!measure) {
         measure = '';
       }
-      ingArr.push(
-        `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
+      if (savedTheme === 'dark') {
+        ingArr.push(
+          `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
+          <p class="js-ingredients-modal dark-theme-light-grey"><span class="dark-theme">&#10038;</span> ${measure} ${ingredient}</p>
+        </li>`
+        );
+      } else {
+        ingArr.push(
+          `<li class="cocktail-ingredients-list-item" data-ingredient-name='${ingredient}'>
           <p class="js-ingredients-modal"><span>&#10038;</span> ${measure} ${ingredient}</p>
         </li>`
-      );
+        );
+      }
       liMarkup = ingArr.join('');
     }
   }
 
-  const markup = `<h2 class="cocktail-title">${drink.strDrink}</h2>
+  let markup;
+
+  if (savedTheme === 'dark') {
+    markup = `<h2 class="cocktail-title dark-theme">${drink.strDrink}</h2>
+      <div class="cocktail-description">
+        <h3 class="cocktail-description__title dark-theme">Instructions:</h3>
+        <p class="cocktail-description__text dark-theme-light-grey">
+          ${drink.strInstructions}
+        </p>
+      </div>
+      <img src="${drink.strDrinkThumb}" alt="${drink.strCategory}" class="cocktail-image" />
+      <div class="cocktail-ingredients">
+        <h3 class="cocktail-ingredients__title dark-theme">Ingredients</h3>
+        <p class="cocktail-ingredients__remark dark-theme">Per cocktail</p>
+        <ul class="cocktail-ingredients-list">
+          ${liMarkup}
+        </ul>
+      </div>`;
+    cocktailsModal.firstElementChild.classList.add('dark-size');
+  } else {
+    markup = `<h2 class="cocktail-title">${drink.strDrink}</h2>
       <div class="cocktail-description">
         <h3 class="cocktail-description__title">Instructions:</h3>
         <p class="cocktail-description__text">
@@ -69,6 +98,8 @@ export async function renderDrinkInfo(data) {
           ${liMarkup}
         </ul>
       </div>`;
+    cocktailsModal.firstElementChild.classList.remove('dark-size');
+  }
 
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'))
   const favoriteCocktail = localFavorite.favoriteCocktails.map(el => {

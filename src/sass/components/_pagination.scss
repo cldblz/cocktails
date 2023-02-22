@@ -37,7 +37,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fdfdfd;
     background-color: $auxiliary-orange-color;
   }
@@ -45,6 +46,18 @@
     color: #fdfdfd;
     background-color: $auxiliary-orange-color;
   }
+}
+
+.pagination-button--dark-theme {
+  border-color: #4f4e4e;
+  &:hover,
+  &:focus {
+    color: $black-color;
+  }
+}
+
+.pagination-button__active--dark-theme {
+  color: $black-color;
 }
 
 .pagination-button-arrow {
@@ -62,17 +75,53 @@
     width: 60px;
     height: 40px;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     @media screen and (min-width: 768px) {
-      color: #fdfdfd;
       background-color: $auxiliary-orange-color;
     }
   }
+  &:hover .pagination-svg,
+  &:focus .pagination-svg {
+    fill: #fdfdfd;
+  }
+  &:hover .pagination-svg--dark-theme,
+  &:focus .pagination-svg--dark-theme {
+    fill: $black-color;
+  }
+}
+
+.pagination-button-arrow--dark-theme {
+  border-color: #4f4e4e;
 }
 
 .pagination-svg {
   fill: $auxiliary-orange-color;
+  &:hover,
+  &:focus {
+    fill: #fdfdfd;
+  }
   &--prev {
     transform: rotate(180deg);
   }
+}
+
+.pagination-svg--dark-theme {
+  &:hover,
+  &:focus {
+    fill: $black-color;
+  }
+}
+
+.pagination-button-arrow:disabled {
+  background-color: transparent;
+  cursor: auto;
+}
+
+.pagination-button-arrow:disabled .pagination-svg {
+  fill: #eaebea;
+}
+
+.pagination-button-arrow:disabled .pagination-svg--dark-theme {
+  fill: #4f4e4e;
 }

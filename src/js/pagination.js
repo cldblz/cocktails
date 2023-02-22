@@ -2,6 +2,7 @@
 import { renderCocktail } from './render_function_for_cocktail';
 
 const svg = require('../images/icons.svg');
+const pagination = document.getElementById('pagination');
 
 let pageSize = 3;
 let currPage = 1;
@@ -22,13 +23,13 @@ export function resetPagination() {
 }
 
 export function createPagination() {
+  const savedTheme = localStorage.getItem('ui-theme');
+
   const totalPages = Math.ceil(totalCards / pageSize);
 
   if (totalPages < 2) {
     return;
   }
-
-  const pagination = document.getElementById('pagination');
 
   pagination.innerHTML = '<div class="pagination-pages"></div>';
   const paginationPages = document.querySelector('.pagination-pages');
@@ -40,6 +41,9 @@ export function createPagination() {
     }
     const button = document.createElement('button');
     button.classList.add('pagination-button');
+    if (savedTheme === 'dark') {
+      button.classList.add('pagination-button--dark-theme');
+    }
     if (i === 1) {
       button.dataset.paginationBtnId = i;
       button.textContent = i;
@@ -63,6 +67,9 @@ export function createPagination() {
 
     if (btnNum === currPage) {
       button.classList.add('pagination-button__active');
+      if (savedTheme === 'dark') {
+        button.classList.add('pagination-button__active--dark-theme');
+      }
     }
 
     button.addEventListener('click', async e => {
@@ -90,17 +97,35 @@ export function createPagination() {
 
   const arrowNext = document.createElement('button');
   arrowNext.classList.add('pagination-button-arrow');
-  arrowNext.innerHTML = ` <svg class="pagination-svg" width="24" height="24">
+  if (savedTheme === 'dark') {
+    arrowNext.classList.add('pagination-button-arrow--dark-theme');
+  }
+  if (savedTheme === 'dark') {
+    arrowNext.innerHTML = ` <svg class="pagination-svg pagination-svg--dark-theme" width="24" height="24">
       <use href="${svg}#icon-arrow"></use>
     </svg>`;
+  } else {
+    arrowNext.innerHTML = ` <svg class="pagination-svg" width="24" height="24">
+      <use href="${svg}#icon-arrow"></use>
+    </svg>`;
+  }
   if (activeBtnDataId === totalPages) {
     arrowNext.setAttribute('disabled', '');
   }
   const arrowPrev = document.createElement('button');
   arrowPrev.classList.add('pagination-button-arrow');
-  arrowPrev.innerHTML = ` <svg class="pagination-svg pagination-svg--prev" width="24" height="24">
+  if (savedTheme === 'dark') {
+    arrowPrev.classList.add('pagination-button-arrow--dark-theme');
+  }
+  if (savedTheme === 'dark') {
+    arrowPrev.innerHTML = ` <svg class="pagination-svg pagination-svg--prev pagination-svg--dark-theme" width="24" height="24">
       <use href="${svg}#icon-arrow"></use>
     </svg>`;
+  } else {
+    arrowPrev.innerHTML = ` <svg class="pagination-svg pagination-svg--prev" width="24" height="24">
+      <use href="${svg}#icon-arrow"></use>
+    </svg>`;
+  }
   if (totalPages < 7) {
     arrowNext.style.display = 'none';
     arrowPrev.style.display = 'none';
@@ -164,7 +189,6 @@ async function drinksRender() {
 }
 
 function ingsRender() {
-  console.log(111);
   const ingsList = document.querySelector('.card-list');
   ingsList.innerHTML = '';
   const slicedArray = sliceArray(fetchedDrinks.drinks);
@@ -176,17 +200,90 @@ function ingsRender() {
   ingsList.insertAdjacentHTML('beforeend', markup);
 }
 
+document.querySelector('.switcher-button').addEventListener('click', event => {
+  console.log(event.target);
+  const savedColor = localStorage.getItem('ui-theme');
+  const names = document.querySelectorAll('.card-itemname');
+  const types = document.querySelectorAll('.card-itemdetails');
+  names.forEach(el => {
+    if (savedColor === 'light' || savedColor === null) {
+      el.classList.remove('name-light');
+      el.classList.add('name-dark');
+    }
+    if (savedColor === 'dark') {
+      el.classList.remove('name-dark');
+      el.classList.add('name-light');
+    }
+  });
+  types.forEach(el => {
+    if (savedColor === 'light' || savedColor === null) {
+      el.classList.remove('name-light');
+      el.classList.add('name-dark');
+    }
+    if (savedColor === 'dark') {
+      el.classList.remove('name-dark');
+      el.classList.add('name-light');
+    }
+  });
+  if (pagination.firstChild) {
+    const paginationButtons = document.querySelectorAll('.pagination-button');
+    paginationButtons.forEach(e => {
+      if (savedColor === 'dark') {
+        e.classList.remove('pagination-button--dark-theme');
+      } else {
+        e.classList.add('pagination-button--dark-theme');
+      }
+    });
+    const paginationArrows = document.querySelectorAll(
+      '.pagination-button-arrow'
+    );
+    paginationArrows.forEach(e => {
+      if (savedColor === 'dark') {
+        e.classList.remove('pagination-button-arrow--dark-theme');
+      } else {
+        e.classList.add('pagination-button-arrow--dark-theme');
+      }
+    });
+    const paginationSvg = document.querySelectorAll('.pagination-svg');
+    paginationSvg.forEach(e => {
+      if (savedColor === 'dark') {
+        e.classList.remove('pagination-svg--dark-theme');
+      } else {
+        e.classList.add('pagination-svg--dark-theme');
+      }
+    });
+    const paginationBtnActive = document.querySelector(
+      '.pagination-button__active'
+    );
+    if (savedColor === 'dark') {
+      paginationBtnActive.classList.remove(
+        'pagination-button__active--dark-theme'
+      );
+    } else {
+      paginationBtnActive.classList.add(
+        'pagination-button__active--dark-theme'
+      );
+    }
+  }
+});
+
 function renderIngredients(element) {
   createPagination();
   const name = element.nameIngredient;
   const details = element.typeIngredient;
   const id = element.idIngredient;
-
-  return `
-    <div class="cocktail-list__cocktail-item">
+  let text;
+  const savedColor = localStorage.getItem('ui-theme');
+  if (savedColor === 'light' || savedColor === null) {
+    text = 'name-dark';
+  }
+  if (savedColor === 'dark') {
+    text = 'name-light';
+  }
+  return `<div class="cocktail-list__cocktail-item">
       <div class='card-item__info'>
-        <p class="card-item__name dark-theme-text">${name}</p>
-        <p class="card-item__details dark-theme-text">${details}</p>
+        <p class="card-item__name ${text}">${name}</p>
+        <p class="card-item__details ${text}">${details}</p>
         <div data-ingredient-name="${name}" data-ingredient-id="${id}" class="button-wrap">
           <button type="button" class="cocktail-item__learn-more js-ingredients-modal">Learn more</button>
           <button type="button" class="cocktail-item__remove">Remove
@@ -196,8 +293,7 @@ function renderIngredients(element) {
           </button>
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 // PAGINATION ------------------------------------------------------------------------------------------- //
