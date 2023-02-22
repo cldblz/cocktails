@@ -1,6 +1,6 @@
-import { createPagination } from './pagination'
+import { createPagination } from './pagination';
 
-const svg = require('../images/icons.svg')
+const svg = require('../images/icons.svg');
 
 document.querySelector('.switcher-button').addEventListener('click', (event)=>{
     const savedColor = localStorage.getItem('ui-theme')
@@ -55,10 +55,9 @@ export function renderCocktail(drink) {
                                 </svg>
                             </button>                                
                         </div>
-                    </li>`
-        }
-        else{
-            return `<li class="cocktail-list__cocktail-item">
+                    </li>`;
+    } else {
+      return `<li class="cocktail-list__cocktail-item">
                         <img class="cocktail-item_img" src="${drinkObj.strDrinkThumb}" alt="preview ocktail" width="395" height="auto">
                         <p class="cocktail-item__name ${text}">${drinkObj.strDrink}</p>
                         <div class="button-wrap" data-id-drink='${drinkObj.idDrink}'>
@@ -69,7 +68,7 @@ export function renderCocktail(drink) {
                                 </svg>
                             </button>
                         </div>
-                    </li>`
-        }
-    })
+                    </li>`;
+    }
+  });
 }

@@ -59,13 +59,13 @@ body {
 }
 
 .burger-menu-btn-icon-dark {
-  fill: white;
+  fill: white !important;
 }
 
 .dark-theme {
-  color: $white-color;
+  color: $white-color !important;
 }
 
 .dark-theme-grey {
-  color: $gray-color;
+  color: $gray-color !important;
 }
