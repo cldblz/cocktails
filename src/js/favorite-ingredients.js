@@ -68,7 +68,7 @@ const getRandomIngredients = (htmlEl) => {
   // Todo: get data
   const localFavorite = JSON.parse(localStorage.getItem('favoriteList'));
   if (localFavorite === null || localFavorite.favoriteIngrediants.length === 0 || localFavorite.favoriteIngrediants.length === 1) {
-    document.querySelector('.not-found').innerText = "You haven't added any favorite ingridients yet"
+    document.querySelector('.not-found').innerText = "You haven't added any favorite ingredients yet"
     return
   }
   const favoriteIngredient = localFavorite.favoriteIngrediants;
