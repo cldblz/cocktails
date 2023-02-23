@@ -8,7 +8,6 @@ const modalIngredientsListM = document.querySelector('.card-list');
 modalIngredientsListM.addEventListener('click', openIngredientsModal);
 
 document.querySelector('.switcher-button').addEventListener('click', (event)=>{
-  console.log(event.target);
   const savedColor = localStorage.getItem('ui-theme')
   const names = document.querySelectorAll('.card-item__name')
   const types = document.querySelectorAll('.card-item__details')
