@@ -197,7 +197,6 @@ function ingsRender() {
 }
 
 document.querySelector('.switcher-button').addEventListener('click', event => {
-  console.log(event.target);
   const savedColor = localStorage.getItem('ui-theme');
   const names = document.querySelectorAll('.card-itemname');
   const types = document.querySelectorAll('.card-itemdetails');
