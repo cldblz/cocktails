@@ -11,6 +11,13 @@ let clickedBtn = 0;
 let fetchedDrinks;
 let totalCards;
 
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
 export function generatePagination(res) {
   fetchedDrinks = res;
   totalCards = fetchedDrinks.drinks.length;
@@ -77,14 +84,19 @@ export function createPagination() {
       if (clickedBtn + 2 >= totalPages && totalPages > 7) {
         clickedBtn = totalPages - 3;
       }
+      scrollToTop();
       if (
         e.target.parentNode.parentNode.parentNode.classList.contains(
           'favorite-ingredients'
         )
       ) {
-        ingsRender();
+        setTimeout(() => {
+          ingsRender();
+        }, 550);
       } else {
-        drinksRender();
+        setTimeout(() => {
+          drinksRender();
+        }, 550);
       }
     });
 
@@ -143,7 +155,10 @@ export function createPagination() {
     if (clickedBtn + 2 >= totalPages && totalPages > 7) {
       clickedBtn = totalPages - 3;
     }
-    drinksRender();
+    scrollToTop();
+    setTimeout(() => {
+      drinksRender();
+    }, 550);
   });
 
   arrowPrev.addEventListener('click', async () => {
@@ -156,7 +171,10 @@ export function createPagination() {
     } else if (activeBtnDataId <= totalPages - 3 || totalPages < 7) {
       clickedBtn -= 1;
     }
-    drinksRender();
+    scrollToTop();
+    setTimeout(() => {
+      drinksRender();
+    }, 550);
   });
 
   pagination.prepend(arrowPrev);
